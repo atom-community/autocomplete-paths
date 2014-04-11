@@ -1,7 +1,7 @@
 {
   "name": "autocomplete-paths",
   "main": "./lib/autocomplete-paths",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Adds path autocompletion to autocomplete+",
   "repository": "https://github.com/saschagehlich/autocomplete-paths",
   "license": "MIT",
