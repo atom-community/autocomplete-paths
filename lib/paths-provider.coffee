@@ -33,6 +33,7 @@ class PathsProvider extends Provider
       prefixFileName = ""
 
     prefixPath = path.resolve basePath, prefixBasePath
+    fullPrefixPath = path.resolve basePath, prefix
 
     files = fs.readdirSync prefixPath
     results = fuzzaldrin.filter files, prefixFileName
@@ -45,6 +46,9 @@ class PathsProvider extends Provider
         result += "/"
       else
         label = "File"
+
+      # Skip if result path and prefix path are the same
+      continue if filePath is fullPrefixPath
 
       # If base path starts with a ., add
       # another slash to the result path

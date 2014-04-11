@@ -4,7 +4,7 @@
 
 Adds path autocompletion to autocomplete+
 
-![autocomplete-paths]()
+![autocomplete-paths](http://s1.directupload.net/images/140411/p5kvife6.gif)
 
 ## Installation
 
