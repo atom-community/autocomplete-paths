@@ -35,6 +35,9 @@ class PathsProvider extends Provider
     prefixPath = path.resolve basePath, prefixBasePath
     fullPrefixPath = path.resolve basePath, prefix
 
+    stat = fs.statSync prefixPath
+    return [] unless stat.isDirectory()
+
     files = fs.readdirSync prefixPath
     results = fuzzaldrin.filter files, prefixFileName
 
