@@ -4,6 +4,7 @@ fuzzaldrin = require "fuzzaldrin"
 _ = require "underscore-plus"
 path = require "path"
 fs = require "fs"
+asyncStat = require "./async-stat"
 
 module.exports =
 class PathsProvider extends Provider
@@ -35,38 +36,47 @@ class PathsProvider extends Provider
     prefixPath = path.resolve basePath, prefixBasePath
     fullPrefixPath = path.resolve basePath, prefix
 
-    stat = fs.statSync prefixPath
-    return [] unless stat.isDirectory()
+    # We need to use the `async` fs.stat method
+    # to handle gently the exeception,
+    # or the console will be always opened...
+    asyncStat(prefix)
+      .catch (err) ->
+        # Just warn in console if there's an error
+        # Don't throw an execption
+        # This happens typically when it's not an directory
+        return console.warn err
+      .then (stat) ->
+        return [] unless stat.isDirectory()
 
-    files = fs.readdirSync prefixPath
-    results = fuzzaldrin.filter files, prefixFileName
+        files = fs.readdirSync prefixPath
+        results = fuzzaldrin.filter files, prefixFileName
 
-    suggestions = for result in results
-      filePath = path.resolve basePath, prefixPath, result
-      stat = fs.statSync filePath
-      if stat.isDirectory()
-        label = "Dir"
-        result += "/"
-      else
-        label = "File"
+        suggestions = for result in results
+          filePath = path.resolve basePath, prefixPath, result
+          stat = fs.statSync filePath
+          if stat.isDirectory()
+            label = "Dir"
+            result += "/"
+          else
+            label = "File"
 
-      # Skip if result path and prefix path are the same
-      continue if filePath is fullPrefixPath
+          # Skip if result path and prefix path are the same
+          continue if filePath is fullPrefixPath
 
-      # If base path starts with a ., add
-      # another slash to the result path
-      resultPath = prefixBasePath
-      unless resultPath.match /[\/|\\]$/
-        resultPath += path.sep
+          # If base path starts with a ., add
+          # another slash to the result path
+          resultPath = prefixBasePath
+          unless resultPath.match /[\/|\\]$/
+            resultPath += path.sep
 
-      new Suggestion this,
-        word: result
-        prefix: prefix
-        label: label
-        data:
-          body: resultPath + result
+          new Suggestion this,
+            word: result
+            prefix: prefix
+            label: label
+            data:
+              body: resultPath + result
 
-    return suggestions
+        return suggestions
 
   confirm: (suggestion) ->
     selection = @editor.getSelection()
