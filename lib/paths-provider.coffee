@@ -43,7 +43,7 @@ class PathsProvider extends Provider
       .catch (err) ->
         # Just warn in console if there's an error
         # Don't throw an execption
-        # This happens typically when it's not an directory
+        # This happens typically when it's not a directory
         return console.warn err
       .then (stat) ->
         return [] unless stat.isDirectory()
