@@ -1,4 +1,4 @@
-# autocomplete+ path autocompletion
+# autocomplete-paths package [![Build Status](https://travis-ci.org/saschagehlich/autocomplete-paths.svg?branch=master)](https://travis-ci.org/saschagehlich/autocomplete-paths)
 
 [View the changelog](https://github.com/saschagehlich/autocomplete-paths/blob/master/CHANGELOG.md)
 
