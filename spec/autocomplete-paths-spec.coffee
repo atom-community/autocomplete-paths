@@ -41,8 +41,8 @@ describe "AutocompleteSnippets", ->
       advanceClock completionDelay
 
       expect(editorView.find(".autocomplete-plus")).toExist()
-      expect(editorView.find(".autocomplete-plus span.word:eq(0)")).toHaveText "sample.js"
-      expect(editorView.find(".autocomplete-plus span.label:eq(0)")).toHaveText "File"
+      expect(editorView.find(".autocomplete-plus span.word:eq(0)")).toHaveText "linkeddir/"
+      expect(editorView.find(".autocomplete-plus span.label:eq(0)")).toHaveText "Dir"
 
   it "does not crash when typing an invalid folder", ->
     waitsForPromise ->
@@ -60,3 +60,32 @@ describe "AutocompleteSnippets", ->
       editor.insertText "/"
 
       advanceClock completionDelay
+
+  it "does not crash when autocompleting symlinked paths", ->
+    [autocomplete] = []
+
+    waitsForPromise ->
+      activationPromise
+        .then (pkg) =>
+          autocomplete = pkg.mainModule
+
+    runs ->
+      editorView = atom.workspaceView.getActiveView()
+      editorView.attachToDom()
+      editor = editorView.getEditor()
+
+      expect(editorView.find(".autocomplete-plus")).not.toExist()
+
+      editor.moveCursorToBottom()
+      editor.insertText c for c in "./linkedir"
+
+      advanceClock completionDelay
+
+      autocompleteView = autocomplete.autocompleteViews[0]
+
+      # Select linkeddir/
+      autocompleteView.trigger "autocomplete-plus:confirm"
+      advanceClock completionDelay
+
+      # Select .gitkeep
+      autocompleteView.trigger "autocomplete-plus:confirm"
