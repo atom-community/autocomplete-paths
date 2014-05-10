@@ -7,7 +7,7 @@ fs = require "fs"
 
 module.exports =
 class PathsProvider extends Provider
-  wordRegex: /(\.+)?\/([a-zA-Z0-9\.\/_-]+)?/g
+  wordRegex: /[a-zA-Z0-9\.\/_-]*\/[a-zA-Z0-9\.\/_-]*/g
   exclusive: true
   buildSuggestions: ->
     selection = @editor.getSelection()
