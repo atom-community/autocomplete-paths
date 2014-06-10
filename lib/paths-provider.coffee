@@ -19,7 +19,10 @@ class PathsProvider extends Provider
     return suggestions
 
   findSuggestionsForPrefix: (prefix) ->
-    basePath = path.dirname @editor.getPath()
+    editorPath = @editor.getPath()
+    return [] unless editorPath
+
+    basePath = path.dirname editorPath
     prefixPath = path.resolve basePath, prefix
 
     directory = path.dirname prefixPath
