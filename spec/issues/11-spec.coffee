@@ -12,9 +12,11 @@ describe "Issue 11", ->
 		atom.config.set "autocomplete-plus.autoActivationDelay", completionDelay
 		completionDelay += 100 # Rendering delay
 
+		# Open an editor which has no path
 		atom.workspaceView = new WorkspaceView
 		atom.workspaceView.openSync()
 		atom.workspaceView.simulateDomAttachment()
+		
 		activationPromise = atom.packages.activatePackage("autocomplete-paths")
 			.then => atom.packages.activatePackage("autocomplete-plus")
 
