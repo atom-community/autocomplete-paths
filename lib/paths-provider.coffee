@@ -32,8 +32,11 @@ class PathsProvider extends Provider
     return [] unless exists
 
     # Is this actually a directory?
-    stat = fs.statSync directory
-    return [] unless stat.isDirectory()
+    try
+      stat = fs.statSync directory
+      return [] unless stat.isDirectory()
+    catch e
+      return []
 
     # Get files
     try
@@ -47,7 +50,10 @@ class PathsProvider extends Provider
       resultPath = path.resolve directory, result
 
       # Check for type
-      stat = fs.statSync resultPath
+      try
+        stat = fs.statSync resultPath
+      catch e
+        continue
       if stat.isDirectory()
         label = "Dir"
         result += "/"
