@@ -47,7 +47,10 @@ class PathsProvider extends Provider
       resultPath = path.resolve directory, result
 
       # Check for type
-      stat = fs.statSync resultPath
+      try
+        stat = fs.statSync resultPath
+      catch e
+        continue
       if stat.isDirectory()
         label = "Dir"
         result += "/"
