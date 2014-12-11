@@ -1,7 +1,5 @@
-{WorkspaceView} = require "atom"
-
 describe "Issue 8", ->
-  [activationPromise, completionDelay] = []
+  [activationPromise, completionDelay, editor, editorView] = []
 
   beforeEach ->
     # Enable live autocompletion
@@ -12,29 +10,33 @@ describe "Issue 8", ->
     atom.config.set "autocomplete-plus.autoActivationDelay", completionDelay
     completionDelay += 100 # Rendering delay
 
-    atom.workspaceView = new WorkspaceView
-    atom.workspaceView.openSync "sample.js"
-    atom.workspaceView.simulateDomAttachment()
-    activationPromise = atom.packages.activatePackage("autocomplete-paths")
-      .then => atom.packages.activatePackage("autocomplete-plus")
+    waitsForPromise ->
+      activationPromise = atom.packages.activatePackage("autocomplete-paths")
+        .then => atom.packages.activatePackage("autocomplete-plus")
+
+    workspaceElement = atom.views.getView(atom.workspace)
+    jasmine.attachToDOM(workspaceElement)
+
+    waitsForPromise -> atom.workspace.open("sample.js").then (e) ->
+      editor = e
+
+    runs ->
+      editorView = atom.views.getView(editor)
 
   it "allows relative path completion without ./", ->
     waitsForPromise ->
       activationPromise
 
     runs ->
-      editorView = atom.workspaceView.getActiveView()
-      editorView.attachToDom()
-      editor = editorView.getEditor()
 
-      expect(editorView.find(".autocomplete-plus")).not.toExist()
+      expect(editorView.querySelector(".autocomplete-plus")).not.toExist()
 
-      editor.moveCursorToBottom()
+      editor.moveToBottom()
       editor.insertText "linkeddir"
       editor.insertText "/"
 
       advanceClock completionDelay
 
-      expect(editorView.find(".autocomplete-plus")).toExist()
-      expect(editorView.find(".autocomplete-plus span.word:eq(0)")).toHaveText ".gitkeep"
-      expect(editorView.find(".autocomplete-plus span.label:eq(0)")).toHaveText "File"
+      expect(editorView.querySelector(".autocomplete-plus")).toExist()
+      expect(editorView.querySelectorAll(".autocomplete-plus span.word")[0]).toHaveText ".gitkeep"
+      expect(editorView.querySelectorAll(".autocomplete-plus span.label")[0]).toHaveText "File"

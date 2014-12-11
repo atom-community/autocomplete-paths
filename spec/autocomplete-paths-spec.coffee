@@ -1,12 +1,10 @@
-{WorkspaceView} = require "atom"
-
 # Use the command `window:run-package-specs` (cmd-alt-ctrl-p) to run specs.
 #
 # To run a specific `it` or `describe` block add an `f` to the front (e.g. `fit`
 # or `fdescribe`). Remove the `f` to unfocus the block.
 
-describe "AutocompleteSnippets", ->
-  [activationPromise, completionDelay] = []
+describe "AutocompletePaths", ->
+  [activationPromise, completionDelay, editor, editorView] = []
 
   beforeEach ->
     # Enable live autocompletion
@@ -17,45 +15,38 @@ describe "AutocompleteSnippets", ->
     atom.config.set "autocomplete-plus.autoActivationDelay", completionDelay
     completionDelay += 100 # Rendering delay
 
-    atom.workspaceView = new WorkspaceView
-    atom.workspaceView.openSync "sample.js"
-    atom.workspaceView.simulateDomAttachment()
-    activationPromise = atom.packages.activatePackage("autocomplete-paths")
-      .then => atom.packages.activatePackage("autocomplete-plus")
-
-  it "shows autocompletions when typing ./", ->
     waitsForPromise ->
-      activationPromise
+      activationPromise = atom.packages.activatePackage("autocomplete-paths")
+        .then => atom.packages.activatePackage("autocomplete-plus")
+
+    workspaceElement = atom.views.getView(atom.workspace)
+    jasmine.attachToDOM(workspaceElement)
+
+    waitsForPromise -> atom.workspace.open("sample.js").then (e) ->
+      editor = e
 
     runs ->
-      editorView = atom.workspaceView.getActiveView()
-      editorView.attachToDom()
-      editor = editorView.getEditor()
+      editorView = atom.views.getView(editor)
 
-      expect(editorView.find(".autocomplete-plus")).not.toExist()
+  it "shows autocompletions when typing ./", ->
+    runs ->
+      expect(editorView.querySelector(".autocomplete-plus")).not.toExist()
 
-      editor.moveCursorToBottom()
+      editor.moveToBottom()
       editor.insertText "."
       editor.insertText "/"
 
       advanceClock completionDelay
 
-      expect(editorView.find(".autocomplete-plus")).toExist()
-      expect(editorView.find(".autocomplete-plus span.word:eq(0)")).toHaveText "linkeddir/"
-      expect(editorView.find(".autocomplete-plus span.label:eq(0)")).toHaveText "Dir"
+      expect(editorView.querySelector(".autocomplete-plus")).toExist()
+      expect(editorView.querySelectorAll(".autocomplete-plus span.word")[0]).toHaveText "linkeddir/"
+      expect(editorView.querySelectorAll(".autocomplete-plus span.label")[0]).toHaveText "Dir"
 
   it "does not crash when typing an invalid folder", ->
-    waitsForPromise ->
-      activationPromise
-
     runs ->
-      editorView = atom.workspaceView.getActiveView()
-      editorView.attachToDom()
-      editor = editorView.getEditor()
+      expect(editorView.querySelector(".autocomplete-plus")).not.toExist()
 
-      expect(editorView.find(".autocomplete-plus")).not.toExist()
-
-      editor.moveCursorToBottom()
+      editor.moveToBottom()
       editor.insertText "./sample.js"
       editor.insertText "/"
 
@@ -70,13 +61,9 @@ describe "AutocompleteSnippets", ->
           autocomplete = pkg.mainModule
 
     runs ->
-      editorView = atom.workspaceView.getActiveView()
-      editorView.attachToDom()
-      editor = editorView.getEditor()
+      expect(editorView.querySelector(".autocomplete-plus")).not.toExist()
 
-      expect(editorView.find(".autocomplete-plus")).not.toExist()
-
-      editor.moveCursorToBottom()
+      editor.moveToBottom()
       editor.insertText c for c in "./linkedir"
 
       advanceClock completionDelay
@@ -84,8 +71,8 @@ describe "AutocompleteSnippets", ->
       autocompleteView = autocomplete.autocompleteViews[0]
 
       # Select linkeddir/
-      autocompleteView.trigger "autocomplete-plus:confirm"
+      atom.commands.dispatch autocompleteView, "autocomplete-plus:confirm"
       advanceClock completionDelay
 
       # Select .gitkeep
-      autocompleteView.trigger "autocomplete-plus:confirm"
+      atom.commands.dispatch autocompleteView, "autocomplete-plus:confirm"
