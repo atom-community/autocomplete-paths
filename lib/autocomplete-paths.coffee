@@ -7,7 +7,7 @@ module.exports =
   autocomplete: null
 
   ###
-   * Registers a SnippetProvider for each editor view
+   * Registers a PathsProvider for each editor view
   ###
   activate: ->
     atom.packages.activatePackage("autocomplete-plus")
@@ -16,22 +16,21 @@ module.exports =
         @registerProviders()
 
   ###
-   * Registers a SnippetProvider for each editor view
+   * Registers a PathsProvider for each editor view
   ###
   registerProviders: ->
-    @editorSubscription = atom.workspaceView.eachEditorView (editorView) =>
-      if editorView.attached and not editorView.mini
-        provider = new PathsProvider editorView
+    @editorSubscription = atom.workspace.observeTextEditors (editor) =>
+      provider = new PathsProvider editor
 
-        @autocomplete.registerProviderForEditorView provider, editorView
+      @autocomplete.registerProviderForEditor provider, editor
 
-        @providers.push provider
+      @providers.push provider
 
   ###
-   * Cleans everything up, unregisters all SnippetProvider instances
+   * Cleans everything up, unregisters all PathsProvider instances
   ###
   deactivate: ->
-    @editorSubscription?.off()
+    @editorSubscription?.dispose()
     @editorSubscription = null
 
     @providers.forEach (provider) =>

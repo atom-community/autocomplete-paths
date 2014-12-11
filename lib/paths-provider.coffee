@@ -10,7 +10,7 @@ class PathsProvider extends Provider
   wordRegex: /[a-zA-Z0-9\.\/_-]*\/[a-zA-Z0-9\.\/_-]*/g
   exclusive: true
   buildSuggestions: ->
-    selection = @editor.getSelection()
+    selection = @editor.getLastSelection()
     prefix = @prefixOfSelection selection
     return unless prefix.length
 
@@ -86,7 +86,7 @@ class PathsProvider extends Provider
     @editor.setSelectedBufferRange [startPosition, [startPosition.row, startPosition.column + suffixLength]]
 
     setTimeout(=>
-      @editorView.trigger "autocomplete-plus:activate"
+      atom.commands.dispatch atom.views.getView(@editor), "autocomplete-plus:activate"
     , 100)
 
     return false # Don't fall back to the default behavior
