@@ -1,6 +1,6 @@
-# autocomplete-paths package [![Build Status](https://travis-ci.org/saschagehlich/autocomplete-paths.svg?branch=master)](https://travis-ci.org/saschagehlich/autocomplete-paths)
+# autocomplete-paths package [![Build Status](https://travis-ci.org/atom-community/autocomplete-paths.svg?branch=master)](https://travis-ci.org/atom-community/autocomplete-paths)
 
-[View the changelog](https://github.com/saschagehlich/autocomplete-paths/blob/master/CHANGELOG.md)
+[View the changelog](https://github.com/atom-community/autocomplete-paths/blob/master/CHANGELOG.md)
 
 Adds path autocompletion to autocomplete+
 

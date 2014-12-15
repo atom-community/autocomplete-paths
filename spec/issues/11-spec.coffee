@@ -1,39 +1,36 @@
-{WorkspaceView} = require "atom"
-
 describe "Issue 11", ->
-	[activationPromise, completionDelay] = []
+  [workspaceElement, completionDelay, editor, editorView] = []
 
-	beforeEach ->
-		# Enable live autocompletion
-		atom.config.set "autocomplete-plus.enableAutoActivation", true
+  beforeEach ->
+    runs ->
+      # Set to live completion
+      atom.config.set "autocomplete-plus.enableAutoActivation", true
+      # Set the completion delay
+      completionDelay = 100
+      atom.config.set "autocomplete-plus.autoActivationDelay", completionDelay
+      completionDelay += 100 # Rendering delay
 
-		# Set the completion delay
-		completionDelay = 100
-		atom.config.set "autocomplete-plus.autoActivationDelay", completionDelay
-		completionDelay += 100 # Rendering delay
+    waitsForPromise ->
+      atom.workspace.open('').then (e) ->
+        editor = e
+        editorView = atom.views.getView(editor)
 
-		# Open an editor which has no path
-		atom.workspaceView = new WorkspaceView
-		atom.workspaceView.openSync()
-		atom.workspaceView.simulateDomAttachment()
-		
-		activationPromise = atom.packages.activatePackage("autocomplete-paths")
-			.then => atom.packages.activatePackage("autocomplete-plus")
+    runs ->
+      workspaceElement = atom.views.getView(atom.workspace)
+      jasmine.attachToDOM(workspaceElement)
 
-	it "Works in editors which have no path", ->
-		waitsForPromise ->
-			activationPromise
+    waitsForPromise -> atom.packages.activatePackage('autocomplete-plus')
 
-		runs ->
-			editorView = atom.workspaceView.getActiveView()
-			editorView.attachToDom()
-			editor = editorView.getEditor()
+    waitsForPromise -> atom.packages.activatePackage("autocomplete-paths")
 
-			expect(editorView.find(".autocomplete-plus")).not.toExist()
+  describe "when an editor with no path is opened", ->
+    it "does not have issues", ->
+      runs ->
+        expect(editorView.querySelector(".autocomplete-plus")).not.toExist()
 
-			editor.moveCursorToBottom()
-			editor.insertText "/"
+        editor.moveToBottom()
+        editor.insertText "/"
 
-			advanceClock completionDelay
+        advanceClock completionDelay
 
-			expect(editorView.find(".autocomplete-plus")).not.toExist()
+        expect(editorView.querySelector(".autocomplete-plus")).not.toExist()

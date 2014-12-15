@@ -1,40 +1,39 @@
-{WorkspaceView} = require "atom"
-
 describe "Issue 8", ->
-  [activationPromise, completionDelay] = []
+  [workspaceElement, completionDelay, editor, editorView] = []
 
   beforeEach ->
-    # Enable live autocompletion
-    atom.config.set "autocomplete-plus.enableAutoActivation", true
+    runs ->
+      # Set to live completion
+      atom.config.set "autocomplete-plus.enableAutoActivation", true
+      # Set the completion delay
+      completionDelay = 100
+      atom.config.set "autocomplete-plus.autoActivationDelay", completionDelay
+      completionDelay += 100 # Rendering delay
 
-    # Set the completion delay
-    completionDelay = 100
-    atom.config.set "autocomplete-plus.autoActivationDelay", completionDelay
-    completionDelay += 100 # Rendering delay
-
-    atom.workspaceView = new WorkspaceView
-    atom.workspaceView.openSync "sample.js"
-    atom.workspaceView.simulateDomAttachment()
-    activationPromise = atom.packages.activatePackage("autocomplete-paths")
-      .then => atom.packages.activatePackage("autocomplete-plus")
-
-  it "allows relative path completion without ./", ->
     waitsForPromise ->
-      activationPromise
+      atom.workspace.open('sample.js').then (e) ->
+        editor = e
+        editorView = atom.views.getView(editor)
 
     runs ->
-      editorView = atom.workspaceView.getActiveView()
-      editorView.attachToDom()
-      editor = editorView.getEditor()
+      workspaceElement = atom.views.getView(atom.workspace)
+      jasmine.attachToDOM(workspaceElement)
 
-      expect(editorView.find(".autocomplete-plus")).not.toExist()
+    waitsForPromise -> atom.packages.activatePackage('autocomplete-plus')
 
-      editor.moveCursorToBottom()
-      editor.insertText "linkeddir"
-      editor.insertText "/"
+    waitsForPromise -> atom.packages.activatePackage("autocomplete-paths")
 
-      advanceClock completionDelay
+  describe "when autocomplete-plus is enabled", ->
 
-      expect(editorView.find(".autocomplete-plus")).toExist()
-      expect(editorView.find(".autocomplete-plus span.word:eq(0)")).toHaveText ".gitkeep"
-      expect(editorView.find(".autocomplete-plus span.label:eq(0)")).toHaveText "File"
+    it "allows relative path completion without ./", ->
+      runs ->
+        expect(editorView.querySelector(".autocomplete-plus")).not.toExist()
+
+        editor.moveToBottom()
+        editor.insertText "linkeddir"
+        editor.insertText "/"
+
+        advanceClock completionDelay
+        expect(editorView.querySelector(".autocomplete-plus")).toExist()
+        expect(editorView.querySelector(".autocomplete-plus span.word")).toHaveText ".gitkeep"
+        expect(editorView.querySelector(".autocomplete-plus span.label")).toHaveText "File"

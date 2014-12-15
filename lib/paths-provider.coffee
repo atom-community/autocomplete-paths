@@ -10,7 +10,7 @@ class PathsProvider extends Provider
   wordRegex: /[a-zA-Z0-9\.\/_-]*\/[a-zA-Z0-9\.\/_-]*/g
   exclusive: true
   buildSuggestions: ->
-    selection = @editor.getSelection()
+    selection = @editor.getLastSelection()
     prefix = @prefixOfSelection selection
     return unless prefix.length
 

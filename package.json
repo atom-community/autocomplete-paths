@@ -3,14 +3,14 @@
   "main": "./lib/autocomplete-paths",
   "version": "0.7.0",
   "description": "Adds path autocompletion to autocomplete+",
-  "repository": "https://github.com/saschagehlich/autocomplete-paths",
+  "repository": "https://github.com/atom-community/autocomplete-paths",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "underscore-plus": "~1.1.2",
-    "autocomplete-plus": "git://github.com/saschagehlich/autocomplete-plus.git",
-    "fuzzaldrin": "~1.0.0"
+    "underscore-plus": ">=  1.1.2",
+    "autocomplete-plus": "git://github.com/atom-community/autocomplete-plus.git",
+    "fuzzaldrin": ">=1.0.0"
   }
 }

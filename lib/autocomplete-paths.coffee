@@ -19,19 +19,19 @@ module.exports =
    * Registers a SnippetProvider for each editor view
   ###
   registerProviders: ->
-    @editorSubscription = atom.workspaceView.eachEditorView (editorView) =>
-      if editorView.attached and not editorView.mini
-        provider = new PathsProvider editorView
-
-        @autocomplete.registerProviderForEditorView provider, editorView
-
+    @editorSubscription = atom.workspace.observeTextEditors (editor) =>
+      return unless editor?
+      editorView = atom.views.getView(editor)
+      if not editorView.mini
+        provider = new PathsProvider(editor)
+        @autocomplete.registerProviderForEditor(provider, editor)
         @providers.push provider
 
   ###
    * Cleans everything up, unregisters all SnippetProvider instances
   ###
   deactivate: ->
-    @editorSubscription?.off()
+    @editorSubscription?.dispose()
     @editorSubscription = null
 
     @providers.forEach (provider) =>
