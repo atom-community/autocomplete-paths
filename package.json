@@ -9,7 +9,7 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "underscore-plus": ">=  1.1.2",
+    "underscore-plus": ">=1.1.2",
     "autocomplete-plus": "git://github.com/atom-community/autocomplete-plus.git",
     "fuzzaldrin": ">=1.0.0"
   }
