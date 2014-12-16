@@ -86,7 +86,7 @@ class PathsProvider extends Provider
     @editor.setSelectedBufferRange [startPosition, [startPosition.row, startPosition.column + suffixLength]]
 
     setTimeout(=>
-      @editorView.trigger "autocomplete-plus:activate"
+      atom.commands.dispatch "autocomplete-plus:activate"
     , 100)
 
     return false # Don't fall back to the default behavior
