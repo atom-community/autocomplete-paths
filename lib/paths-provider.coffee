@@ -81,12 +81,8 @@ class PathsProvider extends Provider
     buffer.delete Range.fromPointWithDelta(cursorPosition, 0, -suggestion.prefix.length)
     @editor.insertText suggestion.data.body
 
-    # Move the cursor behind the body
-    suffixLength = suggestion.data.body.length - suggestion.prefix.length
-    @editor.setSelectedBufferRange [startPosition, [startPosition.row, startPosition.column + suffixLength]]
-
     setTimeout(=>
-      atom.commands.dispatch "autocomplete-plus:activate"
+      atom.commands.dispatch(atom.views.getView(@editor), 'autocomplete-plus:activate')
     , 100)
 
     return false # Don't fall back to the default behavior
