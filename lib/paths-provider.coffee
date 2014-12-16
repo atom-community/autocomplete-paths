@@ -32,8 +32,11 @@ class PathsProvider extends Provider
     return [] unless exists
 
     # Is this actually a directory?
-    stat = fs.statSync directory
-    return [] unless stat.isDirectory()
+    try
+      stat = fs.statSync directory
+      return [] unless stat.isDirectory()
+    catch e
+      return []
 
     # Get files
     try
