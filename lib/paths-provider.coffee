@@ -1,8 +1,7 @@
 {Range}  = require "atom"
 {Provider, Suggestion} = require "autocomplete-plus"
 fuzzaldrin = require "fuzzaldrin"
-_ = require "underscore-plus"
-path = require "./utils/path"
+path = require "path"
 fs = require "fs"
 
 module.exports =
@@ -25,11 +24,15 @@ class PathsProvider extends Provider
     basePath = path.dirname editorPath
     prefixPath = path.resolve basePath, prefix
 
-    directory = path.dirname prefixPath
-
-    # Check if directory exists
-    exists = fs.existsSync directory
-    return [] unless exists
+    if prefix.endsWith('/')
+      directory = prefixPath
+      prefix = ""
+    else
+      if basePath == prefixPath
+        directory = prefixPath
+      else
+        directory = path.dirname prefixPath
+      prefix = path.basename prefix
 
     # Is this actually a directory?
     try
@@ -43,8 +46,7 @@ class PathsProvider extends Provider
       files = fs.readdirSync directory
     catch e
       return []
-    prefixFilename = path.basename prefixPath
-    results = fuzzaldrin.filter files, prefixFilename
+    results = fuzzaldrin.filter files, prefix
 
     suggestions = for result in results
       resultPath = path.resolve directory, result
@@ -62,18 +64,12 @@ class PathsProvider extends Provider
       else
         continue
 
-      prefixDirectory = path.dirname prefix
-      body = path.join prefixDirectory, result
-      body = path.normalize body
-
-      continue if body is prefix
-
       new Suggestion this,
         word: result
         prefix: prefix
         label: label
         data:
-          body: body
+          body: result
 
     return suggestions
 
@@ -87,8 +83,9 @@ class PathsProvider extends Provider
     buffer.delete Range.fromPointWithDelta(cursorPosition, 0, -suggestion.prefix.length)
     @editor.insertText suggestion.data.body
 
-    setTimeout(=>
-      atom.commands.dispatch(atom.views.getView(@editor), 'autocomplete-plus:activate')
-    , 100)
+    if suggestion.label != "File"
+      setTimeout(=>
+        atom.commands.dispatch(atom.views.getView(@editor), 'autocomplete-plus:activate')
+      , 100)
 
     return false # Don't fall back to the default behavior
