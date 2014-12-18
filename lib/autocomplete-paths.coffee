@@ -1,4 +1,3 @@
-_ = require "underscore-plus"
 PathsProvider = require "./paths-provider"
 
 module.exports =
