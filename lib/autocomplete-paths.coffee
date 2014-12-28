@@ -15,7 +15,7 @@ module.exports =
       @editorSubscription = atom.workspace.observeTextEditors((editor) => @registerProvider(Provider, editor))
 
   ###
-   * Registers a Provider for each editor
+   * Registers a Provider for an editor
   ###
   registerProvider: (Provider, editor) ->
     return unless Provider?
@@ -28,7 +28,7 @@ module.exports =
       @providers.push(provider)
 
   ###
-   * Cleans everything up, unregisters all SnippetProvider instances
+   * Cleans everything up, unregisters all Provider instances
   ###
   deactivate: ->
     @editorSubscription?.dispose()
