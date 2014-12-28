@@ -10,19 +10,20 @@ module.exports =
     atom.packages.activatePackage('autocomplete-plus').then (pkg) =>
       @autocomplete = pkg.mainModule
       return unless @autocomplete?
-      PathsProvider = (require './paths-provider').ProviderClass(@autocomplete.Provider, @autocomplete.Suggestion)
-      return unless PathsProvider?
-      @editorSubscription = atom.workspace.observeTextEditors((editor) => @registerProvider(PathsProvider, editor))
+      Provider = (require './paths-provider').ProviderClass(@autocomplete.Provider, @autocomplete.Suggestion)
+      return unless Provider?
+      @editorSubscription = atom.workspace.observeTextEditors((editor) => @registerProvider(Provider, editor))
 
   ###
    * Registers a Provider for each editor
   ###
-  registerProvider: (PathsProvider, editor) ->
+  registerProvider: (Provider, editor) ->
+    return unless Provider?
     return unless editor?
     editorView = atom.views.getView(editor)
     return unless editorView?
     if not editorView.mini
-      provider = new PathsProvider(editor)
+      provider = new Provider(editor)
       @autocomplete.registerProviderForEditor(provider, editor)
       @providers.push(provider)
 
