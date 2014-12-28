@@ -1,30 +1,30 @@
-PathsProvider = require "./paths-provider"
-
 module.exports =
   editorSubscription: null
   providers: []
   autocomplete: null
 
   ###
-   * Registers a SnippetProvider for each editor view
+   * Activates the package
   ###
   activate: ->
-    atom.packages.activatePackage("autocomplete-plus")
-      .then (pkg) =>
-        @autocomplete = pkg.mainModule
-        @registerProviders()
+    atom.packages.activatePackage('autocomplete-plus').then (pkg) =>
+      @autocomplete = pkg.mainModule
+      return unless @autocomplete?
+      PathsProvider = (require './paths-provider').ProviderClass(@autocomplete.Provider, @autocomplete.Suggestion)
+      return unless PathsProvider?
+      @editorSubscription = atom.workspace.observeTextEditors((editor) => @registerProvider(PathsProvider, editor))
 
   ###
-   * Registers a SnippetProvider for each editor view
+   * Registers a Provider for each editor
   ###
-  registerProviders: ->
-    @editorSubscription = atom.workspace.observeTextEditors (editor) =>
-      return unless editor?
-      editorView = atom.views.getView(editor)
-      if not editorView.mini
-        provider = new PathsProvider(editor)
-        @autocomplete.registerProviderForEditor(provider, editor)
-        @providers.push provider
+  registerProvider: (PathsProvider, editor) ->
+    return unless editor?
+    editorView = atom.views.getView(editor)
+    return unless editorView?
+    if not editorView.mini
+      provider = new PathsProvider(editor)
+      @autocomplete.registerProviderForEditor(provider, editor)
+      @providers.push(provider)
 
   ###
    * Cleans everything up, unregisters all SnippetProvider instances
@@ -33,7 +33,5 @@ module.exports =
     @editorSubscription?.dispose()
     @editorSubscription = null
 
-    @providers.forEach (provider) =>
-      @autocomplete.unregisterProvider provider
-
+    @providers.forEach (provider) => @autocomplete.unregisterProvider(provider)
     @providers = []

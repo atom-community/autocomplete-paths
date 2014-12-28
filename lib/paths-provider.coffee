@@ -1,91 +1,91 @@
-{Range}  = require "atom"
-{Provider, Suggestion} = require "autocomplete-plus"
-fuzzaldrin = require "fuzzaldrin"
-path = require "path"
-fs = require "fs"
+{Range}  = require 'atom'
+fuzzaldrin = require 'fuzzaldrin'
+path = require 'path'
+fs = require 'fs'
 
 module.exports =
-class PathsProvider extends Provider
-  wordRegex: /[a-zA-Z0-9\.\/_-]*\/[a-zA-Z0-9\.\/_-]*/g
-  exclusive: true
-  buildSuggestions: ->
-    selection = @editor.getLastSelection()
-    prefix = @prefixOfSelection selection
-    return unless prefix.length
+ProviderClass: (Provider, Suggestion)  ->
+  class PathsProvider extends Provider
+    wordRegex: /[a-zA-Z0-9\.\/_-]*\/[a-zA-Z0-9\.\/_-]*/g
+    exclusive: true
+    buildSuggestions: ->
+      selection = @editor.getLastSelection()
+      prefix = @prefixOfSelection(selection)
+      return unless prefix.length
 
-    suggestions = @findSuggestionsForPrefix prefix
-    return unless suggestions.length
-    return suggestions
+      suggestions = @findSuggestionsForPrefix(prefix)
+      return unless suggestions.length
+      return suggestions
 
-  findSuggestionsForPrefix: (prefix) ->
-    editorPath = @editor.getPath()
-    return [] unless editorPath
+    findSuggestionsForPrefix: (prefix) ->
+      editorPath = @editor.getPath()
+      return [] unless editorPath
 
-    basePath = path.dirname editorPath
-    prefixPath = path.resolve basePath, prefix
+      basePath = path.dirname(editorPath)
+      prefixPath = path.resolve(basePath, prefix)
 
-    if prefix.endsWith('/')
-      directory = prefixPath
-      prefix = ""
-    else
-      if basePath == prefixPath
+      if prefix.endsWith('/')
         directory = prefixPath
+        prefix = ""
       else
-        directory = path.dirname prefixPath
-      prefix = path.basename prefix
+        if basePath == prefixPath
+          directory = prefixPath
+        else
+          directory = path.dirname(prefixPath)
+        prefix = path.basename(prefix)
 
-    # Is this actually a directory?
-    try
-      stat = fs.statSync directory
-      return [] unless stat.isDirectory()
-    catch e
-      return []
-
-    # Get files
-    try
-      files = fs.readdirSync directory
-    catch e
-      return []
-    results = fuzzaldrin.filter files, prefix
-
-    suggestions = for result in results
-      resultPath = path.resolve directory, result
-
-      # Check for type
+      # Is this actually a directory?
       try
-        stat = fs.statSync resultPath
+        stat = fs.statSync(directory)
+        return [] unless stat.isDirectory()
       catch e
-        continue
-      if stat.isDirectory()
-        label = "Dir"
-        result += "/"
-      else if stat.isFile()
-        label = "File"
-      else
-        continue
+        return []
 
-      new Suggestion this,
-        word: result
-        prefix: prefix
-        label: label
-        data:
-          body: result
+      # Get files
+      try
+        files = fs.readdirSync(directory)
+      catch e
+        return []
+      results = fuzzaldrin.filter(files, prefix)
 
-    return suggestions
+      suggestions = for result in results
+        resultPath = path.resolve(directory, result)
 
-  confirm: (suggestion) ->
-    selection = @editor.getSelection()
-    startPosition = selection.getBufferRange().start
-    buffer = @editor.getBuffer()
+        # Check for type
+        try
+          stat = fs.statSync(resultPath)
+        catch e
+          continue
+        if stat.isDirectory()
+          label = 'Dir'
+          result += path.sep
+        else if stat.isFile()
+          label = "File"
+        else
+          continue
 
-    # Replace the prefix with the body
-    cursorPosition = @editor.getCursorBufferPosition()
-    buffer.delete Range.fromPointWithDelta(cursorPosition, 0, -suggestion.prefix.length)
-    @editor.insertText suggestion.data.body
+        new Suggestion this,
+          word: result
+          prefix: prefix
+          label: label
+          data:
+            body: result
 
-    if suggestion.label != "File"
-      setTimeout(=>
-        atom.commands.dispatch(atom.views.getView(@editor), 'autocomplete-plus:activate')
-      , 100)
+      return suggestions
 
-    return false # Don't fall back to the default behavior
+    confirm: (suggestion) ->
+      selection = @editor.getSelection()
+      startPosition = selection.getBufferRange().start
+      buffer = @editor.getBuffer()
+
+      # Replace the prefix with the body
+      cursorPosition = @editor.getCursorBufferPosition()
+      buffer.delete(Range.fromPointWithDelta(cursorPosition, 0, -suggestion.prefix.length))
+      @editor.insertText(suggestion.data.body)
+
+      if suggestion.label != "File"
+        setTimeout(=>
+          atom.commands.dispatch(atom.views.getView(@editor), 'autocomplete-plus:activate')
+        , 100)
+
+      return false # Don't fall back to the default behavior

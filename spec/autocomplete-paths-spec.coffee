@@ -1,13 +1,13 @@
 describe "AutocompleteSnippets", ->
-  [workspaceElement, completionDelay, editor, editorView] = []
+  [workspaceElement, completionDelay, editor, editorView, autocompleteManager, mainModule] = []
 
   beforeEach ->
     runs ->
       # Set to live completion
-      atom.config.set "autocomplete-plus.enableAutoActivation", true
+      atom.config.set('autocomplete-plus.enableAutoActivation', true)
       # Set the completion delay
       completionDelay = 100
-      atom.config.set "autocomplete-plus.autoActivationDelay", completionDelay
+      atom.config.set('autocomplete-plus.autoActivationDelay', completionDelay)
       completionDelay += 100 # Rendering delay
 
     waitsForPromise ->
@@ -19,47 +19,49 @@ describe "AutocompleteSnippets", ->
       workspaceElement = atom.views.getView(atom.workspace)
       jasmine.attachToDOM(workspaceElement)
 
-    waitsForPromise -> atom.packages.activatePackage('autocomplete-plus')
+    waitsForPromise -> atom.packages.activatePackage('autocomplete-plus').then (a) ->
+      mainModule = a.mainModule
+      autocompleteManager = mainModule.autocompleteManagers[0]
 
-    waitsForPromise -> atom.packages.activatePackage("autocomplete-paths")
+    waitsForPromise -> atom.packages.activatePackage('autocomplete-paths')
 
   describe "when autocomplete-plus is enabled", ->
     it "shows autocompletions when typing ./", ->
       runs ->
-        expect(editorView.querySelector(".autocomplete-plus")).not.toExist()
+        expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
 
         editor.moveToBottom()
-        editor.insertText "."
-        editor.insertText "/"
+        editor.insertText('.')
+        editor.insertText('/')
 
-        advanceClock completionDelay
+        advanceClock(completionDelay)
 
-        expect(editorView.querySelector(".autocomplete-plus")).toExist()
-        expect(editorView.querySelector(".autocomplete-plus span.word")).toHaveText "linkeddir/"
-        expect(editorView.querySelector(".autocomplete-plus span.label")).toHaveText "Dir"
+        expect(editorView.querySelector('.autocomplete-plus')).toExist()
+        expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('linkeddir/')
+        expect(editorView.querySelector('.autocomplete-plus span.label')).toHaveText('Dir')
 
     it "does not crash when typing an invalid folder", ->
       runs ->
-        expect(editorView.querySelector(".autocomplete-plus")).not.toExist()
+        expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
 
         editor.moveToBottom()
-        editor.insertText "./sample.js"
-        editor.insertText "/"
+        editor.insertText('./sample.js')
+        editor.insertText('/')
 
-        advanceClock completionDelay
+        advanceClock(completionDelay)
 
     it "does not crash when autocompleting symlinked paths", ->
       runs ->
-        expect(editorView.querySelector(".autocomplete-plus")).not.toExist()
+        expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
 
         editor.moveToBottom()
-        editor.insertText c for c in "./linkedir"
+        editor.insertText(c) for c in './linkedir'
 
-        advanceClock completionDelay
+        advanceClock(completionDelay)
 
         # Select linkeddir/
         atom.commands.dispatch('autocomplete-plus:confirm')
-        advanceClock completionDelay
+        advanceClock(completionDelay)
 
         # Select .gitkeep
         atom.commands.dispatch('autocomplete-plus:confirm')
