@@ -1,4 +1,4 @@
-# autocomplete-paths package [![Build Status](https://travis-ci.org/atom-community/autocomplete-paths.svg?branch=master)](https://travis-ci.org/atom-community/autocomplete-paths)
+# autocomplete+ paths suggestions [![Build Status](https://travis-ci.org/atom-community/autocomplete-paths.svg?branch=master)](https://travis-ci.org/atom-community/autocomplete-paths)
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/atom-community/autocomplete-paths?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
