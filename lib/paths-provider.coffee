@@ -64,12 +64,19 @@ ProviderClass: (Provider, Suggestion)  ->
         else
           continue
 
-        new Suggestion this,
+        suggestion = new Suggestion this,
           word: result
           prefix: prefix
           label: label
           data:
             body: result
+        if suggestion.label != "File"
+          suggestion.onDidConfirm = =>
+            setTimeout(=>
+              atom.commands.dispatch(atom.views.getView(@editor), 'autocomplete-plus:activate')
+            , 100)
+
+        suggestion
 
       return suggestions
 
