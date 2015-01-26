@@ -1,8 +1,9 @@
 describe "Issue 8", ->
-  [workspaceElement, completionDelay, editor, editorView, autocompleteManager, mainModule] = []
+  [workspaceElement, completionDelay, editor, editorView, autocompleteManager, didAutocomplete] = []
 
   beforeEach ->
     runs ->
+      didAutocomplete = false
       # Set to live completion
       atom.config.set('autocomplete-plus.enableAutoActivation', true)
       # Set the completion delay
@@ -20,8 +21,9 @@ describe "Issue 8", ->
       jasmine.attachToDOM(workspaceElement)
 
     waitsForPromise -> atom.packages.activatePackage('autocomplete-plus').then (a) ->
-      mainModule = a.mainModule
-      autocompleteManager = mainModule.autocompleteManagers[0]
+      autocompleteManager = a.mainModule.autocompleteManager
+      autocompleteManager.onDidAutocomplete ->
+        didAutocomplete = true
 
     waitsForPromise -> atom.packages.activatePackage('autocomplete-paths')
 
@@ -37,6 +39,10 @@ describe "Issue 8", ->
 
         advanceClock(completionDelay)
 
+      waitsFor ->
+        didAutocomplete is true
+
+      runs ->
         expect(editorView.querySelector('.autocomplete-plus')).toExist()
         expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('.gitkeep')
         expect(editorView.querySelector('.autocomplete-plus span.label')).toHaveText('File')

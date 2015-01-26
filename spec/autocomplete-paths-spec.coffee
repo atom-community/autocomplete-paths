@@ -1,27 +1,29 @@
 describe "AutocompleteSnippets", ->
-  [workspaceElement, completionDelay, editor, editorView, autocompleteManager, mainModule] = []
+  [workspaceElement, completionDelay, editor, editorView, autocompleteManager, didAutocomplete] = []
 
   beforeEach ->
     runs ->
+      didAutocomplete = false
       # Set to live completion
       atom.config.set('autocomplete-plus.enableAutoActivation', true)
       # Set the completion delay
       completionDelay = 100
       atom.config.set('autocomplete-plus.autoActivationDelay', completionDelay)
       completionDelay += 100 # Rendering delay
+      workspaceElement = atom.views.getView(atom.workspace)
+      jasmine.attachToDOM(workspaceElement)
 
     waitsForPromise ->
       atom.workspace.open('sample.js').then (e) ->
         editor = e
         editorView = atom.views.getView(editor)
 
-    runs ->
-      workspaceElement = atom.views.getView(atom.workspace)
-      jasmine.attachToDOM(workspaceElement)
+    waitsForPromise -> atom.packages.activatePackage('language-javascript')
 
     waitsForPromise -> atom.packages.activatePackage('autocomplete-plus').then (a) ->
-      mainModule = a.mainModule
-      autocompleteManager = mainModule.autocompleteManagers[0]
+      autocompleteManager = a.mainModule.autocompleteManager
+      autocompleteManager.onDidAutocomplete ->
+        didAutocomplete = true
 
     waitsForPromise -> atom.packages.activatePackage('autocomplete-paths')
 
@@ -36,6 +38,10 @@ describe "AutocompleteSnippets", ->
 
         advanceClock(completionDelay)
 
+      waitsFor ->
+        didAutocomplete is true
+
+      runs ->
         expect(editorView.querySelector('.autocomplete-plus')).toExist()
         expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('linkeddir/')
         expect(editorView.querySelector('.autocomplete-plus span.label')).toHaveText('Dir')
@@ -50,6 +56,9 @@ describe "AutocompleteSnippets", ->
 
         advanceClock(completionDelay)
 
+      waitsFor ->
+        didAutocomplete is true
+
     it "does not crash when autocompleting symlinked paths", ->
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
@@ -59,9 +68,22 @@ describe "AutocompleteSnippets", ->
 
         advanceClock(completionDelay)
 
+      waitsFor ->
+        didAutocomplete is true
+
+      runs ->
         # Select linkeddir/
-        atom.commands.dispatch('autocomplete-plus:confirm')
+        didAutocomplete = false
+        suggestionListView = atom.views.getView(autocompleteManager.suggestionList)
+        atom.commands.dispatch(suggestionListView, 'autocomplete-plus:confirm')
         advanceClock(completionDelay)
 
+      waitsFor ->
+        didAutocomplete is true
+
+      runs ->
         # Select .gitkeep
-        atom.commands.dispatch('autocomplete-plus:confirm')
+        didAutocomplete = false
+        suggestionListView = atom.views.getView(autocompleteManager.suggestionList)
+        atom.commands.dispatch(suggestionListView, 'autocomplete-plus:confirm')
+        advanceClock(completionDelay + 1000)

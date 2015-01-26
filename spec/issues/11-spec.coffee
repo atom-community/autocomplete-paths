@@ -1,8 +1,9 @@
 describe "Issue 11", ->
-  [workspaceElement, completionDelay, editor, editorView, autocompleteManager, mainModule] = []
+  [workspaceElement, completionDelay, editor, editorView, autocompleteManager, didAutocomplete] = []
 
   beforeEach ->
     runs ->
+      didAutocomplete = false
       # Set to live completion
       atom.config.set('autocomplete-plus.enableAutoActivation', true)
       # Set the completion delay
@@ -15,13 +16,16 @@ describe "Issue 11", ->
         editor = e
         editorView = atom.views.getView(editor)
 
+    waitsForPromise -> atom.packages.activatePackage('language-javascript')
+
     runs ->
       workspaceElement = atom.views.getView(atom.workspace)
       jasmine.attachToDOM(workspaceElement)
 
     waitsForPromise -> atom.packages.activatePackage('autocomplete-plus').then (a) ->
-      mainModule = a.mainModule
-      autocompleteManager = mainModule.autocompleteManagers[0]
+      autocompleteManager = a.mainModule.autocompleteManager
+      autocompleteManager.onDidAutocomplete ->
+        didAutocomplete = true
 
     waitsForPromise -> atom.packages.activatePackage('autocomplete-paths')
 
@@ -35,4 +39,8 @@ describe "Issue 11", ->
 
         advanceClock(completionDelay)
 
+      waitsFor ->
+        didAutocomplete is true
+
+      runs ->
         expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
