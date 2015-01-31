@@ -12,7 +12,7 @@ notifications:
     on_start: false
 
 script:
-  - ./build-package-travis.sh
+  - ./build-package-travis-osx.sh
 
 git:
   depth: 10

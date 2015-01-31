@@ -1,4 +1,6 @@
-describe "AutocompleteSnippets", ->
+path = require('path')
+
+describe 'Autocomplete Snippets', ->
   [workspaceElement, completionDelay, editor, editorView, autocompleteManager, didAutocomplete] = []
 
   beforeEach ->
@@ -18,17 +20,19 @@ describe "AutocompleteSnippets", ->
         editor = e
         editorView = atom.views.getView(editor)
 
-    waitsForPromise -> atom.packages.activatePackage('language-javascript')
+    waitsForPromise ->
+      atom.packages.activatePackage('language-javascript')
 
     waitsForPromise -> atom.packages.activatePackage('autocomplete-plus').then (a) ->
       autocompleteManager = a.mainModule.autocompleteManager
       autocompleteManager.onDidAutocomplete ->
         didAutocomplete = true
 
-    waitsForPromise -> atom.packages.activatePackage('autocomplete-paths')
+    waitsForPromise ->
+      atom.packages.activatePackage('autocomplete-paths')
 
-  describe "when autocomplete-plus is enabled", ->
-    it "shows autocompletions when typing ./", ->
+  describe 'when autocomplete-plus is enabled', ->
+    it 'shows autocompletions when typing ./', ->
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
 
@@ -46,7 +50,7 @@ describe "AutocompleteSnippets", ->
         expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('linkeddir/')
         expect(editorView.querySelector('.autocomplete-plus span.label')).toHaveText('Dir')
 
-    it "does not crash when typing an invalid folder", ->
+    it 'does not crash when typing an invalid folder', ->
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
 
@@ -59,7 +63,7 @@ describe "AutocompleteSnippets", ->
       waitsFor ->
         didAutocomplete is true
 
-    it "does not crash when autocompleting symlinked paths", ->
+    it 'does not crash when autocompleting symlinked paths', ->
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
 

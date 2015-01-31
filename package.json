@@ -11,5 +11,8 @@
   "dependencies": {
     "underscore-plus": ">=1.1.2",
     "fuzzaldrin": ">=1.0.0"
+  },
+  "devDependencies": {
+    "coffeelint": "^1.8.1"
   }
 }

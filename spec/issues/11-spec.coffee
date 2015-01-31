@@ -1,4 +1,4 @@
-describe "Issue 11", ->
+describe 'Issue 11', ->
   [workspaceElement, completionDelay, editor, editorView, autocompleteManager, didAutocomplete] = []
 
   beforeEach ->
@@ -16,7 +16,8 @@ describe "Issue 11", ->
         editor = e
         editorView = atom.views.getView(editor)
 
-    waitsForPromise -> atom.packages.activatePackage('language-javascript')
+    waitsForPromise ->
+      atom.packages.activatePackage('language-javascript')
 
     runs ->
       workspaceElement = atom.views.getView(atom.workspace)
@@ -27,10 +28,11 @@ describe "Issue 11", ->
       autocompleteManager.onDidAutocomplete ->
         didAutocomplete = true
 
-    waitsForPromise -> atom.packages.activatePackage('autocomplete-paths')
+    waitsForPromise ->
+      atom.packages.activatePackage('autocomplete-paths')
 
-  describe "when an editor with no path is opened", ->
-    it "does not have issues", ->
+  describe 'when an editor with no path is opened', ->
+    it 'does not have issues', ->
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
 

@@ -1,4 +1,4 @@
-describe "Issue 8", ->
+describe 'Issue 8', ->
   [workspaceElement, completionDelay, editor, editorView, autocompleteManager, didAutocomplete] = []
 
   beforeEach ->
@@ -25,11 +25,12 @@ describe "Issue 8", ->
       autocompleteManager.onDidAutocomplete ->
         didAutocomplete = true
 
-    waitsForPromise -> atom.packages.activatePackage('autocomplete-paths')
+    waitsForPromise ->
+      atom.packages.activatePackage('autocomplete-paths')
 
-  describe "when autocomplete-plus is enabled", ->
+  describe 'when autocomplete-plus is enabled', ->
 
-    it "allows relative path completion without ./", ->
+    it 'allows relative path completion without ./', ->
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
 
