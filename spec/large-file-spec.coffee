@@ -31,8 +31,6 @@ describe 'Autocomplete Snippets', ->
       spyOn(autocompleteManager, 'hideSuggestionList').andCallThrough()
       autocompleteManager.onDidAutocomplete ->
         didAutocomplete = true
-      autocompleteManager.onDidAutocomplete ->
-        didAutocomplete = true
 
     waitsForPromise ->
       atom.packages.activatePackage('autocomplete-paths')
