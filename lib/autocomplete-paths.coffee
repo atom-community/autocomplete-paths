@@ -1,14 +1,18 @@
 module.exports =
-  registration: null
-  pathsProvider: null
+  provider: null
+  ready: false
 
   activate: ->
-    PathsProvider = require('./paths-provider')
-    @pathsProvider = new PathsProvider()
-    @registration = atom.services.provide('autocomplete.provider', '1.0.0', {provider: @pathsProvider})
+    @ready = true
 
   deactivate: ->
-    @registration?.dispose()
-    @registration = null
-    @pathsProvider?.dispose()
-    @pathsProvider = null
+    @provider = null
+
+  getProvider: ->
+    return @provider if @provider?
+    PathsProvider = require('./paths-provider')
+    @provider = new PathsProvider()
+    return @provider
+
+  provide: ->
+    return {provider: @getProvider()}
