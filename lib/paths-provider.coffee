@@ -98,7 +98,7 @@ class PathsProvider
         word = result
 
         # strip the file extension if the config is unchecked
-        if !displayFileExtension
+        unless displayFileExtension
           word = word.replace(/\..+$/, '')
 
       else
