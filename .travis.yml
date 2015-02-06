@@ -11,8 +11,10 @@ notifications:
     on_failure: always
     on_start: false
 
-script:
-  - ./build-package-travis-osx.sh
+env:
+  - APM_TEST_PACKAGES="autocomplete-plus"
+  
+script: 'curl -s https://raw.githubusercontent.com/atom/ci/master/build-package.sh | sh'
 
 git:
   depth: 10
