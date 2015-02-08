@@ -3,11 +3,13 @@ module.exports =
   pathsProvider: null
 
   config:
-    displayFileExtension:
-      title: 'Display File Extension'
-      description: 'If checked, file extensions will be displayed during autocomplete.'
-      type: 'boolean'
-      default: true
+    fileExtensionsExclude:
+      title: 'File Extensions to Exclude'
+      description: 'A comma seperated list of sources to exclude the file extension in autocomplete results.'
+      type: 'array'
+      default: []
+      items:
+        type: 'string'
 
   activate: ->
     PathsProvider = require('./paths-provider')
