@@ -54,6 +54,8 @@ class PathsProvider
     return [] unless basePath?
 
     prefixPath = path.resolve(basePath, prefix)
+    scopeDecriptor = editor.getRootScopeDescriptor()
+    fileExtensionsExclude = atom.config.get('autocomplete-paths.fileExtensionsExclude')
 
     if prefix.endsWith('/')
       directory = prefixPath
@@ -87,20 +89,29 @@ class PathsProvider
         stat = fs.statSync(resultPath)
       catch e
         continue
+
       if stat.isDirectory()
         label = 'Dir'
         result += path.sep
+        word = result
       else if stat.isFile()
         label = 'File'
+        word = result
+
+        # strip the file extension if the current descriptor is listed in the config
+        for key, source of fileExtensionsExclude
+          if scopeDecriptor.scopes.indexOf(source) >= 0
+            word = word.replace(/\..+$/, '')
+            break
       else
         continue
 
       suggestion =
-        word: result
+        word: word
         prefix: prefix
         label: label
         data:
-          body: result
+          body: word
       if suggestion.label isnt 'File'
         suggestion.onDidConfirm = ->
           atom.commands.dispatch(atom.views.getView(editor), 'autocomplete-plus:activate')
