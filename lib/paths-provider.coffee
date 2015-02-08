@@ -99,10 +99,10 @@ class PathsProvider
         word = result
 
         # strip the file extension if the current descriptor is listed in the config
-        for key,source of fileExtensionsExclude
+        for key, source of fileExtensionsExclude
           if scopeDecriptor.scopes.indexOf(source) >= 0
             word = word.replace(/\..+$/, '')
-            break;
+            break
       else
         continue
 
