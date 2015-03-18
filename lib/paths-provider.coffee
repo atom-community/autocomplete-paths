@@ -7,7 +7,7 @@ module.exports =
 class PathsProvider
   id: 'autocomplete-paths-pathsprovider'
   selector: '*'
-  wordRegex: /[a-zA-Z0-9\.\/_-]*\/[a-zA-Z0-9\.\/_-]*/g
+  wordRegex: /(?:[a-zA-Z]:)?[a-zA-Z0-9./\\_-]*(?:\/|\\\\?)[a-zA-Z0-9./\\_-]*/g
   cache: []
 
   requestHandler: (options = {}) =>
@@ -55,7 +55,7 @@ class PathsProvider
 
     prefixPath = path.resolve(basePath, prefix)
 
-    if prefix.endsWith('/')
+    if prefix.match(/[/\\]$/)
       directory = prefixPath
       prefix = ''
     else
@@ -89,7 +89,6 @@ class PathsProvider
         continue
       if stat.isDirectory()
         label = 'Dir'
-        result += path.sep
       else if stat.isFile()
         label = 'File'
       else

@@ -72,7 +72,7 @@ describe 'Autocomplete Snippets', ->
 
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).toExist()
-        expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('linkeddir/')
+        expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('linkeddir')
         expect(editorView.querySelector('.autocomplete-plus span.completion-label')).toHaveText('Dir')
 
     it 'does not crash when typing an invalid folder', ->
@@ -93,7 +93,7 @@ describe 'Autocomplete Snippets', ->
         expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
 
         editor.moveToBottom()
-        editor.insertText(c) for c in './linkedir'
+        editor.insertText(c) for c in './linkeddir'
 
         advanceClock(completionDelay)
 
@@ -101,8 +101,11 @@ describe 'Autocomplete Snippets', ->
         autocompleteManager.displaySuggestions.calls.length is 1
 
       runs ->
-        # Select linkeddir/
+        # Select linkeddir
         atom.commands.dispatch(editorView, 'autocomplete-plus:confirm')
+        advanceClock(completionDelay)
+
+        editor.insertText('/')
         advanceClock(completionDelay)
 
       waitsFor ->
