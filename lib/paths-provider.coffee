@@ -52,7 +52,6 @@ class PathsProvider
 
   findSuggestionsForPrefix: (editor, basePath, prefix) ->
     return [] unless basePath?
-
     prefixPath = path.resolve(basePath, prefix)
 
     if prefix.endsWith('/')
@@ -65,48 +64,46 @@ class PathsProvider
         directory = path.dirname(prefixPath)
       prefix = path.basename(prefix)
 
-    # Is this actually a directory?
-    try
-      stat = fs.statSync(directory)
-      return [] unless stat.isDirectory()
-    catch e
-      return []
-
-    # Get files
-    try
-      files = fs.readdirSync(directory)
-    catch e
-      return []
-    results = fuzzaldrin.filter(files, prefix)
-
-    suggestions = for result in results
-      resultPath = path.resolve(directory, result)
-
-      # Check for type
-      try
-        stat = fs.statSync(resultPath)
-      catch e
-        continue
-      if stat.isDirectory()
-        label = 'Dir'
-        result += path.sep
-      else if stat.isFile()
-        label = 'File'
-      else
-        continue
-
-      suggestion =
-        word: result
-        prefix: prefix
-        label: label
-        data:
-          body: result
-      if suggestion.label isnt 'File'
-        suggestion.onDidConfirm = ->
-          atom.commands.dispatch(atom.views.getView(editor), 'autocomplete-plus:activate')
-
-      suggestion
-    return suggestions
+     return new Promise (resolve, reject) =>
+      # Is this actually a directory?
+      fs.stat directory, (error, stat) =>
+        return resolve([]) if error
+        return resolve([]) unless stat.isDirectory()
+        
+        # Get files
+        fs.readdir directory, (error, files)
+          return resolve([]) if error
+          results = fuzzaldrin.filter(files, prefix)
+          
+          statPromises = for result in results 
+            new Promise (resolve) =>
+              resultPath = path.resolve(directory, result)
+                # Check for type
+              sfs.stat resultPath, (error, stat) =>
+                return resolve() if error
+                return resolve({word, stat})
+          Promise.all(statPromises).then (results) =>
+            suggestions = for result in results
+              continue unless result
+              if result.stat.isDirectory()
+                label = 'Dir'
+                result += path.sep
+              else if stat.isFile()
+                label = 'File'
+              else
+                continue
+              suggestion =
+                word: result.word
+                prefix: prefix
+                label: label
+                data:
+                  body: result.word
+              if suggestion.label isnt 'File'
+                suggestion.onDidConfirm = ->
+                  atom.commands.dispatch(atom.views.getView(editor), 'autocomplete-plus:activate')
+        
+              suggestion
+            resolve(suggestions)
 
   dispose: =>
     @editor = null
