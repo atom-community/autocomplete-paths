@@ -71,7 +71,7 @@ class PathsProvider
         return resolve([]) unless stat.isDirectory()
         
         # Get files
-        fs.readdir directory, (error, files)
+        fs.readdir directory, (error, files) ->
           return resolve([]) if error
           results = fuzzaldrin.filter(files, prefix)
           
