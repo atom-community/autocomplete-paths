@@ -64,9 +64,9 @@ class PathsProvider
         directory = path.dirname(prefixPath)
       prefix = path.basename(prefix)
 
-     return new Promise (resolve, reject) =>
+     return new Promise (resolve, reject) ->
       # Is this actually a directory?
-      fs.stat directory, (error, stat) =>
+      fs.stat directory, (error, stat) ->
         return resolve([]) if error
         return resolve([]) unless stat.isDirectory()
         
@@ -76,13 +76,13 @@ class PathsProvider
           results = fuzzaldrin.filter(files, prefix)
           
           statPromises = for result in results 
-            new Promise (resolve) =>
+            new Promise (resolve) ->
               resultPath = path.resolve(directory, result)
                 # Check for type
-              sfs.stat resultPath, (error, stat) =>
+              sfs.stat resultPath, (error, stat) ->
                 return resolve() if error
                 return resolve({word, stat})
-          Promise.all(statPromises).then (results) =>
+          Promise.all(statPromises).then (results) ->
             suggestions = for result in results
               continue unless result
               if result.stat.isDirectory()
