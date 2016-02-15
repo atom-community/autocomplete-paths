@@ -4,12 +4,44 @@
 
 [View the changelog](https://github.com/atom-community/autocomplete-paths/blob/master/CHANGELOG.md)
 
-Adds path autocompletion to autocomplete+
+Adds path autocompletion to autocomplete+ depending on scope and prefix. Supports custom scopes defined by the user.
 
-![autocomplete-paths](http://s1.directupload.net/images/140411/p5kvife6.gif)
+![autocomplete-paths](http://fs5.directupload.net/images/160215/5tdhz7c4.gif)
 
 ## Installation
 
 You can install autocomplete-paths using the Preferences pane.
 
-**Please make sure you have autocomplete-plus installed as well**
+## Defining scopes
+
+`autocomplete-paths` triggers whenever a scope matches the current cursor position and scope
+descriptor. Here is an example for a JavaScript-Scope that supports the ES6 'import' syntax as
+well as the CommonJS `require()` syntax and the RequireJS `define()` syntax:
+
+```js
+{
+  scopes: ['source.js'], // Only triggers in JS files
+  prefixes: [
+    'import\\s+.*?from\\s+[\'"]', // import foo from '
+    'require\\([\'"]', // require('
+    'define\\(\\[?[\'"]' // define([' or define('
+  ],
+  extensions: ['js', 'jsx', 'ts', 'coffee'], // Only shows JS / TS / Coffee files
+  relative: true, // Inserts relative paths only
+  replaceOnInsert: [ // Replaces the file extensions on insert
+    ['.jsx?$', ''],
+    ['.ts$', ''],
+    ['.coffee$', '']
+  ]
+}
+```
+
+You can add custom scopes by adding them to your `config.cson` file:
+
+```coffee
+"autocomplete-paths":
+  scopes: [
+    { ... },
+    { ... },
+  ]
+```
