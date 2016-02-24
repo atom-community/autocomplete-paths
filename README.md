@@ -27,7 +27,8 @@ well as the CommonJS `require()` syntax and the RequireJS `define()` syntax:
     'define\\(\\[?[\'"]' // define([' or define('
   ],
   extensions: ['js', 'jsx', 'ts', 'coffee'], // Only shows JS / TS / Coffee files
-  relative: true, // Inserts relative paths only
+  relative: true, // Inserts relative paths only - defaults to true
+  includeCurrentDirectory: true, // Include './' in path - defaults to true
   replaceOnInsert: [ // Replaces the file extensions on insert
     ['.jsx?$', ''],
     ['.ts$', ''],
