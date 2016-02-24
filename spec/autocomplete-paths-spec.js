@@ -34,7 +34,8 @@ describe('autocomplete-paths', () => {
           }),
         atom.packages.activatePackage('language-javascript'),
         atom.packages.activatePackage('autocomplete-paths'),
-        atom.packages.activatePackage('autocomplete-plus')
+        atom.packages.activatePackage('autocomplete-plus'),
+        atom.packages.activatePackage('status-bar')
       ])
     )
     runs(() => {
