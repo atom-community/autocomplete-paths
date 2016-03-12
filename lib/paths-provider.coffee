@@ -7,7 +7,7 @@ module.exports =
 class PathsProvider
   id: 'autocomplete-paths-pathsprovider'
   selector: '*'
-  wordRegex: /(?:[a-zA-Z]:)?[a-zA-Z0-9./\\_-]*(?:\/|\\\\?)[a-zA-Z0-9./\\_-]*/g
+  wordRegex: /(?:[a-zA-Z]:(?:\/|\\\\?))?[a-zA-Z0-9./\\_~@-]*/g
   cache: []
 
   requestHandler: (options = {}) =>
@@ -53,7 +53,10 @@ class PathsProvider
   findSuggestionsForPrefix: (editor, basePath, prefix) ->
     return [] unless basePath?
 
-    prefixPath = path.resolve(basePath, prefix)
+    if prefix.match(/^~\//) and process.platform isnt 'win32'
+      prefixPath = require('expand-tilde')(prefix)
+    else
+      prefixPath = path.resolve(basePath, prefix)
 
     if prefix.match(/[/\\]$/)
       directory = prefixPath
