@@ -133,3 +133,38 @@ describe 'Autocomplete Snippets', ->
         expect(editorView.querySelector('.autocomplete-plus')).toExist()
         expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('.gitkeep')
         expect(editorView.querySelector('.autocomplete-plus span.completion-label')).toHaveText('File')
+
+    it 'uses project path as root when relative root setting is enabled', ->
+      runs ->
+        expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
+
+        atom.config.set('autocomplete-paths.relativeRoot', true)
+        editor.moveToBottom()
+        editor.insertText('/')
+
+        advanceClock(completionDelay)
+
+      waitsFor ->
+        autocompleteManager.displaySuggestions.calls.length is 1
+
+      runs ->
+        expect(editorView.querySelector('.autocomplete-plus')).toExist()
+        expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('linkeddir')
+        expect(editorView.querySelector('.autocomplete-plus span.right-label')).toHaveText('Dir')
+
+    it 'uses file system root when relative root setting is disabled', ->
+      runs ->
+        expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
+
+        atom.config.set('autocomplete-paths.relativeRoot', false)
+        editor.moveToBottom()
+        editor.insertText('/')
+
+        advanceClock(completionDelay)
+
+      waitsFor ->
+        autocompleteManager.displaySuggestions.calls.length is 1
+
+      runs ->
+        expect(editorView.querySelector('.autocomplete-plus')).toExist()
+        expect(editorView.querySelector('.autocomplete-plus span.word')).not.toHaveText('linkeddir')
