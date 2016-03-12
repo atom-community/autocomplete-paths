@@ -133,3 +133,26 @@ describe 'Autocomplete Snippets', ->
         expect(editorView.querySelector('.autocomplete-plus')).toExist()
         expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('.gitkeep')
         expect(editorView.querySelector('.autocomplete-plus span.completion-label')).toHaveText('File')
+
+    it 'expands tilde as home directory when not on windows', ->
+      runs ->
+        expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
+
+        editor.moveToBottom()
+        editor.insertText('~')
+        editor.insertText('/')
+
+        advanceClock(completionDelay)
+
+      waitsFor ->
+        if process.platform isnt 'win32'
+          autocompleteManager.displaySuggestions.calls.length is 1
+        else
+          true
+
+      runs ->
+        if process.platform isnt 'win32'
+          expect(editorView.querySelector('.autocomplete-plus')).toExist()
+          expect(editorView.querySelector('.autocomplete-plus span.word')).not.toHaveText('linkeddir')
+        else
+          expect(editorView.querySelector('.autocomplete-plus')).not.toExist()
