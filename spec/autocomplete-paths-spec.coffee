@@ -73,7 +73,7 @@ describe 'Autocomplete Snippets', ->
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).toExist()
         expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('linkeddir')
-        expect(editorView.querySelector('.autocomplete-plus span.completion-label')).toHaveText('Dir')
+        expect(editorView.querySelector('.autocomplete-plus span.right-label')).toHaveText('Dir')
 
     it 'does not crash when typing an invalid folder', ->
       runs ->
@@ -132,4 +132,4 @@ describe 'Autocomplete Snippets', ->
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).toExist()
         expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('.gitkeep')
-        expect(editorView.querySelector('.autocomplete-plus span.completion-label')).toHaveText('File')
+        expect(editorView.querySelector('.autocomplete-plus span.right-label')).toHaveText('File')
