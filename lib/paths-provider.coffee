@@ -18,7 +18,8 @@ class PathsProvider
     return [] unless basePath?
 
     prefix = @prefixForCursor(options.editor, options.buffer, options.cursor, options.position)
-    return [] unless prefix.length
+
+    return [] unless prefix.length > atom.config.get('autocomplete-plus.minimumWordLength')
 
     suggestions = @findSuggestionsForPrefix(options.editor, basePath, prefix)
     return [] unless suggestions.length
