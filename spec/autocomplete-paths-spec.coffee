@@ -4,9 +4,9 @@ describe 'Autocomplete Snippets', ->
   [workspaceElement, completionDelay, editor, editorView, pathsMain, autocompleteMain, autocompleteManager] = []
 
   testConfig = {
-    "autocomplete-plus.enableAutoActivation": true
-    "autocomplete-plus.minimumWordLength": -1
-    "autocomplete-plus.autoActivationDelay": 100
+    'autocomplete-plus.enableAutoActivation': true
+    'autocomplete-plus.minimumWordLength': -1
+    'autocomplete-plus.autoActivationDelay': 100
   }
 
   beforeEach ->
@@ -19,7 +19,7 @@ describe 'Autocomplete Snippets', ->
       workspaceElement = atom.views.getView(atom.workspace)
       jasmine.attachToDOM(workspaceElement)
 
-      autocompletePlusPkg = atom.packages.loadPackage 'autocomplete-plus'
+      autocompletePlusPkg = atom.packages.loadPackage('autocomplete-plus')
       autocompletePlusPkg.requireMainModule()
       autocompleteMain = autocompletePlusPkg.mainModule
 

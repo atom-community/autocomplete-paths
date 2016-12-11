@@ -12,7 +12,7 @@ describe 'Issue 11', ->
       workspaceElement = atom.views.getView(atom.workspace)
       jasmine.attachToDOM(workspaceElement)
 
-      autocompletePlusPkg = atom.packages.loadPackage 'autocomplete-plus'
+      autocompletePlusPkg = atom.packages.loadPackage('autocomplete-plus')
       autocompletePlusPkg.requireMainModule()
       autocompleteMain = autocompletePlusPkg.mainModule
 
