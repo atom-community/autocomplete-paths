@@ -3,19 +3,32 @@ path = require('path')
 describe 'Autocomplete Snippets', ->
   [workspaceElement, completionDelay, editor, editorView, pathsMain, autocompleteMain, autocompleteManager] = []
 
+  testConfig = {
+    'autocomplete-plus.enableAutoActivation': true
+    'autocomplete-plus.minimumWordLength': -1
+    'autocomplete-plus.autoActivationDelay': 100
+  }
+
   beforeEach ->
     runs ->
-      # Set to live completion
-      atom.config.set('autocomplete-plus.enableAutoActivation', true)
-      # Set the completion delay
+      Object.keys(testConfig).forEach (key) ->
+        atom.config.set(key, testConfig[key])
+
       completionDelay = 100
-      atom.config.set('autocomplete-plus.autoActivationDelay', completionDelay)
       completionDelay += 100 # Rendering delay
       workspaceElement = atom.views.getView(atom.workspace)
       jasmine.attachToDOM(workspaceElement)
-      autocompleteMain = atom.packages.loadPackage('autocomplete-plus').mainModule
+
+      autocompletePlusPkg = atom.packages.loadPackage('autocomplete-plus')
+      autocompletePlusPkg.requireMainModule()
+      autocompleteMain = autocompletePlusPkg.mainModule
+
       spyOn(autocompleteMain, 'consumeProvider').andCallThrough()
-      pathsMain = atom.packages.loadPackage('autocomplete-paths').mainModule
+
+      pathPkg = atom.packages.loadPackage('autocomplete-paths')
+      pathPkg.requireMainModule()
+      pathsMain = pathPkg.mainModule
+
       spyOn(pathsMain, 'provide').andCallThrough()
 
     waitsForPromise ->
@@ -72,8 +85,8 @@ describe 'Autocomplete Snippets', ->
 
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).toExist()
-        expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('linkeddir')
-        expect(editorView.querySelector('.autocomplete-plus span.completion-label')).toHaveText('Dir')
+        expect(editorView.querySelector('.autocomplete-plus .word')).toHaveText('linkeddir')
+        expect(editorView.querySelector('.autocomplete-plus .right-label')).toHaveText('Dir')
 
     it 'does not crash when typing an invalid folder', ->
       runs ->
@@ -131,5 +144,5 @@ describe 'Autocomplete Snippets', ->
 
       runs ->
         expect(editorView.querySelector('.autocomplete-plus')).toExist()
-        expect(editorView.querySelector('.autocomplete-plus span.word')).toHaveText('.gitkeep')
-        expect(editorView.querySelector('.autocomplete-plus span.completion-label')).toHaveText('File')
+        expect(editorView.querySelector('.autocomplete-plus .word')).toHaveText('.gitkeep')
+        expect(editorView.querySelector('.autocomplete-plus .right-label')).toHaveText('File')

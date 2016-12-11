@@ -11,9 +11,17 @@ describe 'Autocomplete Snippets', ->
       completionDelay += 100 # Rendering delay
       workspaceElement = atom.views.getView(atom.workspace)
       jasmine.attachToDOM(workspaceElement)
-      autocompleteMain = atom.packages.loadPackage('autocomplete-plus').mainModule
+
+      autocompletePlusPkg = atom.packages.loadPackage('autocomplete-plus')
+      autocompletePlusPkg.requireMainModule()
+      autocompleteMain = autocompletePlusPkg.mainModule
+
       spyOn(autocompleteMain, 'consumeProvider').andCallThrough()
-      pathsMain = atom.packages.loadPackage('autocomplete-paths').mainModule
+
+      pathPkg = atom.packages.loadPackage('autocomplete-paths')
+      pathPkg.requireMainModule()
+      pathsMain = pathPkg.mainModule
+
       spyOn(pathsMain, 'provide').andCallThrough()
 
     waitsForPromise ->
