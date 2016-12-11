@@ -1,5 +1,6 @@
 {Range}  = require('atom')
 fuzzaldrin = require('fuzzaldrin')
+slash = require('slash')
 path = require('path')
 fs = require('fs')
 
@@ -94,6 +95,9 @@ class PathsProvider
         label = 'File'
       else
         continue
+
+      if atom.config.get('autocomplete-paths.normalizeSlashes')
+        result = slash(result)
 
       suggestion =
         word: result

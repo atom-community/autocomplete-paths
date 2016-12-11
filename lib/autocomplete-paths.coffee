@@ -2,6 +2,13 @@ module.exports =
   provider: null
   ready: false
 
+  config:
+    normalizeSlashes:
+      title: 'Normalize Slashes'
+      description: 'Converts backslashes to forward slashes'
+      type: 'boolean'
+      default: false
+
   activate: ->
     @ready = true
 
