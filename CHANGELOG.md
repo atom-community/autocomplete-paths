@@ -1,3 +1,9 @@
+2.0.1 (August 11 2017)
+===================
+
+* Avoid synchronous I/O with GitRepository
+* Fix non-git projects
+
 2.0.0 (August 11 2017)
 ===================
 
