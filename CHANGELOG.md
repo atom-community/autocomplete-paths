@@ -1,3 +1,10 @@
+2.0.0 (TBD)
+===================
+
+* Paths are now cached on startup or using the 'Rebuild Cache' command
+* autocomplete-paths now shows all relevant files, depending on the scope descriptor and prefix
+* See [the default scopes](lib/config/default-scopes) for examples on how to define scopes
+
 0.5.0 (May 10 2014)
 ===================
 
