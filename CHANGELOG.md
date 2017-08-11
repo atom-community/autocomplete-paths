@@ -1,3 +1,9 @@
+2.0.2 (August 11 2017)
+===================
+
+* Upgraded `fuzzaldrin-plus`, `readdirp` and `pathwatchers`, resulting in better
+  cross-platform support and stability
+
 2.0.1 (August 11 2017)
 ===================
 
