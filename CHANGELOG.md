@@ -1,3 +1,13 @@
+2.0.3 (August 11 2017)
+===================
+
+* Backwards slashes are now replaced with forward slashes in windows, if possible.
+* Got rid of `readdirp` and `pathwatcher` dependencies. Instead, we are now using atom's
+  integrated `pathwatcher` by using the exposed `Directory` and `File` classes. This also
+  fixes installation issues on machines that don't have the necessary compilation tools
+  installed
+* Added support for coffeescript's `require ""` syntax
+
 2.0.2 (August 11 2017)
 ===================
 
