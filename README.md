@@ -8,6 +8,12 @@ Adds path autocompletion to autocomplete+ depending on scope and prefix. Support
 
 ![autocomplete-paths](http://fs5.directupload.net/images/160215/5tdhz7c4.gif)
 
+## Features
+
+* Support for JavaScript, CoffeeScript, TypeScript, PHP, SASS, LESS, Stylus, CSS, C, C++, Lua, Ruby and Python
+* Very efficient thanks to caching and incremental cache rebuilds
+* Easily extendable
+
 ## Installation
 
 You can install autocomplete-paths using the Preferences pane.
