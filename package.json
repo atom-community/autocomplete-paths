@@ -12,6 +12,7 @@
     "fuzzaldrin-plus": "^0.4.1",
     "pathwatcher": "^7.1.0",
     "readdirp": "^2.1.0",
+    "slash": "^1.0.0",
     "underscore-plus": ">=1.1.2"
   },
   "providedServices": {
