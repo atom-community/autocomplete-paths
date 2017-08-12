@@ -1,3 +1,8 @@
+2.0.4 (August 11 2017)
+===================
+
+* Added a file limit that should fix application freezing
+
 2.0.3 (August 11 2017)
 ===================
 
