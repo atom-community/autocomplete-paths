@@ -1,20 +1,20 @@
-2.3.0 (August 12 2017)
+2.4.0 (August 12 2017)
 ===================
 
 * Support for relative paths - now only suggests paths in the given directory (e.g. `./lib/`)
 * Strip directory paths from suggestions, if possible
 
-2.2.0 (August 12 2017)
+2.3.0 (August 12 2017)
 ===================
 
 * Exposing provider's `suggestionPriority`
 
-2.1.0 (August 12 2017)
+2.2.0 (August 12 2017)
 ===================
 
 * Added a file limit that should fix application freezing
 
-2.0.3 (August 11 2017)
+2.1.0 (August 11 2017)
 ===================
 
 * Backwards slashes are now replaced with forward slashes in windows, if possible.
