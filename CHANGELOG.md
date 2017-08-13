@@ -1,3 +1,9 @@
+2.5.0 (August 13 2017)
+===================
+
+* Support for `core.ignoreNames` option
+* Fix `currentDirectory` handling
+
 2.4.0 (August 12 2017)
 ===================
 
