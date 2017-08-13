@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "fuzzaldrin-plus": "^0.4.1",
+    "minimatch": "^3.0.4",
     "slash": "^1.0.0",
     "underscore-plus": ">=1.1.2"
   },
