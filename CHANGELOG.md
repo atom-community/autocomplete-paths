@@ -1,3 +1,9 @@
+2.6.0 (August 14 2017)
+===================
+
+* Disabled directory watching / incremental builds for Windows, fixing freezes
+* Fix `normalizeSlashes` option for Windows
+
 2.5.0 (August 13 2017)
 ===================
 

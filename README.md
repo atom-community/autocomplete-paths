@@ -11,7 +11,7 @@ Adds path autocompletion to autocomplete+ depending on scope and prefix. Support
 ## Features
 
 * Support for JavaScript, CoffeeScript, TypeScript, PHP, SASS, LESS, Stylus, CSS, C, C++, Lua, Ruby and Python
-* Very efficient thanks to caching and incremental cache rebuilds
+* Very efficient thanks to caching and incremental cache rebuilds (incremental builds are [disabled for Windows](https://github.com/atom/node-pathwatcher/issues/70). Please use the `Rebuild Cache` command.)
 * Easily extendable
 
 ## Installation
