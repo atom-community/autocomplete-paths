@@ -1,3 +1,9 @@
+2.7.0 (August 15 2017)
+===================
+
+* Actually stop indexing when cancelling due to maximum file count
+* Hide status bar item when indexing has been cancelled
+
 2.6.0 (August 14 2017)
 ===================
 
