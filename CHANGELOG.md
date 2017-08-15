@@ -1,3 +1,9 @@
+2.8.0 (August 15 2017)
+===================
+
+* User scopes override default scopes now
+
+
 2.7.0 (August 15 2017)
 ===================
 
