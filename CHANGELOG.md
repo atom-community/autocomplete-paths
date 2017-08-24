@@ -1,3 +1,10 @@
+2.8.1 (August 24 2017)
+===================
+
+* Fixes memory leak in PathsCache, which now uses strings as keys instead of `Directory` instances
+* Includes prefix config for unnamed ES6 imports
+* Includes support for .vue files
+
 2.8.0 (August 15 2017)
 ===================
 
