@@ -1,3 +1,9 @@
+2.8.2 (September 1 2017)
+===================
+
+* Fixes memory leak in PathsCache which caused the `maximum file count` message after a couple
+  of cache rebuilds
+
 2.8.1 (August 24 2017)
 ===================
 
