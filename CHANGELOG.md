@@ -1,3 +1,8 @@
+2.9.0 (September 2 2017)
+===================
+
+* Adds option to ignore submodules
+
 2.8.2 (September 1 2017)
 ===================
 
