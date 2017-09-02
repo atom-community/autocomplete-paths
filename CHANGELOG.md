@@ -1,4 +1,4 @@
-2.9.0 (September 2 2017)
+2.10.1 (September 2 2017)
 ===================
 
 * Adds option to ignore submodules
