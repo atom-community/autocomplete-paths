@@ -1,3 +1,11 @@
+2.11.0 (September 3 2017)
+===================
+
+* Adds option for HTML autocompletion
+* Fixes `replaceOnInsert` logic for requests that match multiple regexes
+* Regards `core.excludeVcsIgnoredPaths` option
+* Better support for `.vue` files. Splits CSS and JS handling into separate scopes.
+
 2.10.1 (September 2 2017)
 ===================
 
