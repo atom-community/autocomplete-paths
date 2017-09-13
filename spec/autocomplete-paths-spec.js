@@ -22,6 +22,7 @@ describe('autocomplete-paths', () => {
   beforeEach(() => {
     atom.config.set('autocomplete-plus.enableAutoActivation', true)
     atom.config.set('autocomplete-plus.autoActivationDelay', COMPLETION_DELAY)
+    atom.config.set('autocomplete-paths.ignoredPatterns', ['**/tests'])
 
     let workspaceElement = atom.views.getView(atom.workspace)
     jasmine.attachToDOM(workspaceElement)
@@ -51,7 +52,7 @@ describe('autocomplete-paths', () => {
     })
     waitsForPromise(() => getSuggestions()
       .then((suggestions) => {
-        expect(suggestions).toHaveLength(2)
+        expect(suggestions).toHaveLength(4)
       }))
   })
 
@@ -63,9 +64,11 @@ describe('autocomplete-paths', () => {
     })
     waitsForPromise(() => getSuggestions()
       .then((suggestions) => {
-        expect(suggestions).toHaveLength(2)
+        expect(suggestions).toHaveLength(4)
         expect(suggestions[0].displayText).toBe('somedir/testfile.js')
-        expect(suggestions[1].displayText).toBe('somedir/testdir/nested-test-file.js')
+        expect(suggestions[1].displayText).toBe('linkeddir/testfile.js')
+        expect(suggestions[2].displayText).toBe('somedir/testdir/nested-test-file.js')
+        expect(suggestions[3].displayText).toBe('linkeddir/testdir/nested-test-file.js')
       }))
   })
 
