@@ -35,6 +35,7 @@ well as the CommonJS `require()` syntax and the RequireJS `define()` syntax:
   extensions: ['js', 'jsx', 'ts', 'coffee'], // Only shows JS / TS / Coffee files
   relative: true, // Inserts relative paths only - defaults to true
   includeCurrentDirectory: true, // Include './' in path - defaults to true
+  projectRelativePath: false, // Includes full relative path starting after the project directory
   replaceOnInsert: [ // Replaces the file extensions on insert
     ['.jsx?$', ''],
     ['.ts$', ''],
