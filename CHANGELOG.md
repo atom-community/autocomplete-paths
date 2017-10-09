@@ -1,3 +1,15 @@
+2.12.0 (October 9 2017)
+===================
+
+Thanks a lot to @avaly for the following contributions:
+
+* Fixes support for switching projects
+* Adds support for project-relative paths autocompletion
+* Shows cache file count in status bar
+* Adds a `ignoredPatterns` option that specifies ignored files
+* Uses `find` system command if possible which improves performance
+* Uses new file watcher API introduced in Atom 1.21.0
+
 2.11.0 (September 3 2017)
 ===================
 
