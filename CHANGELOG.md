@@ -1,3 +1,8 @@
+2.12.1 (October 13 2017)
+===================
+
+* Fixes uninitialized files - thanks @avaly
+
 2.12.0 (October 9 2017)
 ===================
 
