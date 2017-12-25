@@ -1,3 +1,4 @@
+This is a fork of autocomplete-paths. autocomplete-paths use **find** get file, and it follow symbolic links default. It may cause high cpu usage when circle symbolic links existed in any path. This fork has a option to ignore that, set **findOptions** to -P can ignore symbolic links in ignored directory such as node_modules. A pull request has been sent to autocomplete-paths, you use use this plugin instead of it before request merged.
 # autocomplete+ paths suggestions [![Build Status](https://travis-ci.org/atom-community/autocomplete-paths.svg?branch=master)](https://travis-ci.org/atom-community/autocomplete-paths)
 
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/atom-community/autocomplete-paths?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)

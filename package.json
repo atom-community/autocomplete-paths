@@ -1,9 +1,9 @@
 {
-  "name": "autocomplete-paths",
+  "name": "autocomplete-paths-ignore-circle-symlinks",
   "main": "./lib/autocomplete-paths",
   "version": "2.12.2",
   "description": "Adds path autocompletion to autocomplete+",
-  "repository": "https://github.com/atom-community/autocomplete-paths",
+  "repository": "https://github.com/phphe/autocomplete-paths",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
