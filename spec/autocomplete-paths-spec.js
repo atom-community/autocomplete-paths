@@ -22,8 +22,7 @@ describe('autocomplete-paths', () => {
   beforeEach(() => {
     atom.config.set('autocomplete-plus.enableAutoActivation', true)
     atom.config.set('autocomplete-plus.autoActivationDelay', COMPLETION_DELAY)
-    atom.config.set('autocomplete-paths.ignoredPatterns', ['**/tests'])
-
+    atom.config.set('autocomplete-paths.ignoredPatterns', ['**/tests', '**/tsconfig.json'])
     let workspaceElement = atom.views.getView(atom.workspace)
     jasmine.attachToDOM(workspaceElement)
 
@@ -52,7 +51,7 @@ describe('autocomplete-paths', () => {
     })
     waitsForPromise(() => getSuggestions()
       .then((suggestions) => {
-        expect(suggestions).toHaveLength(4)
+        expect(suggestions).toHaveLength(5)
       }))
   })
 
@@ -64,7 +63,7 @@ describe('autocomplete-paths', () => {
     })
     waitsForPromise(() => getSuggestions()
       .then((suggestions) => {
-        expect(suggestions).toHaveLength(4)
+        expect(suggestions).toHaveLength(5)
         expect(suggestions[0].displayText).toBe('somedir/testfile.js')
         expect(suggestions[1].displayText).toBe('linkeddir/testfile.js')
         expect(suggestions[2].displayText).toBe('somedir/testdir/nested-test-file.js')
@@ -94,4 +93,16 @@ describe('autocomplete-paths', () => {
       expect(editor.getText()).toEqual('require(\'./somedir/testfile')
     })
   })
+  it('can use alias configuration from webpack config or tsconfig.json', () => {
+    waitsForPromise(() => atom.packages.activatePackage('language-javascript'))
+    atom.config.set('autocomplete-paths.enableDetectAliases', true)
+    runs(() => {
+      editor.setText('require(\'@/zz')
+      editor.setCursorBufferPosition([0, Infinity])
+    })
+    waitsForPromise(() => getSuggestions()
+      .then((suggestions) => {
+        expect(suggestions[0].displayText).toBe('yyy/zzz.js')
+    }))
+  });
 })
