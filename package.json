@@ -9,7 +9,7 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "fuzzaldrin-plus-fast": "^1.0.0",
+    "fuzzaldrin-plus-fast": "^1.0.2",
     "git-ignore-parser": "^0.0.2",
     "minimatch": "^3.0.4",
     "slash": "^1.0.0",
