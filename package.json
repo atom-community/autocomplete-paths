@@ -1,7 +1,7 @@
 {
   "name": "autocomplete-paths",
   "main": "./lib/autocomplete-paths",
-  "version": "2.12.1",
+  "version": "2.12.4",
   "description": "Adds path autocompletion to autocomplete+",
   "repository": "https://github.com/atom-community/autocomplete-paths",
   "license": "MIT",
@@ -9,7 +9,7 @@
     "atom": ">0.50.0"
   },
   "dependencies": {
-    "fuzzaldrin-plus": "^0.4.1",
+    "fuzzaldrin-plus-fast": "^1.1.1",
     "git-ignore-parser": "^0.0.2",
     "minimatch": "^3.0.4",
     "slash": "^1.0.0",
