@@ -29,10 +29,10 @@ file-uri-to-path@1.0.0:
   resolved "https://registry.yarnpkg.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
   integrity sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==
 
-fuzzaldrin-plus-fast@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/fuzzaldrin-plus-fast/-/fuzzaldrin-plus-fast-1.1.1.tgz#f80242e5a88808cf2fc56db4a66a0e268096f2aa"
-  integrity sha512-/iya2VXYqD+fETm/qlDGr0XrWK7oqXdWYYM8AFeG3B2pr0gSvhzzW3ADZJWG1qQKrFhalDU1BYlrBLLb6I369A==
+fuzzaldrin-plus-fast@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/fuzzaldrin-plus-fast/-/fuzzaldrin-plus-fast-1.2.0.tgz#6b9e301363b2d1849458e068ef2a037bba2828c9"
+  integrity sha512-8ItF1l80+oW9bx+dL72b/+ccaLDBseY/cwk6M9VjC+XLTkTy//cmEOoMFzfT0iLPp9vbIGlDjLtLWMluHvGRgw==
   dependencies:
     bindings "~1.5.0"
     node-addon-api "~3.0.2"
@@ -58,16 +58,19 @@ node-gyp-build@^4.2.3:
   resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-4.2.3.tgz#ce6277f853835f718829efb47db20f3e4d9c4739"
   integrity sha512-MN6ZpzmfNCRM+3t57PTJHgHyw/h4OWnZ6mR8P5j/uZtqQr46RRuDE/P+g3n0YR/AiYXeWixZZzaip77gdICfRg==
 
-slash@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/slash/-/slash-1.0.0.tgz#c41f2f6c39fc16d1cd17ad4b5d896114ae470d55"
+slash@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/slash/-/slash-3.0.0.tgz#6539be870c165adbd5240220dbe361f1bc4d4634"
+  integrity sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==
 
-underscore-plus@>=1.1.2:
-  version "1.6.6"
-  resolved "https://registry.yarnpkg.com/underscore-plus/-/underscore-plus-1.6.6.tgz#65ecde1bdc441a35d89e650fd70dcf13ae439a7d"
+underscore-plus@>=1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/underscore-plus/-/underscore-plus-1.7.0.tgz#107f1900c520ac1fefe4edec6580a7ff08a99d0f"
+  integrity sha512-A3BEzkeicFLnr+U/Q3EyWwJAQPbA19mtZZ4h+lLq3ttm9kn8WC4R3YpuJZEXmWdLjYP47Zc8aLZm9kwdv+zzvA==
   dependencies:
-    underscore "~1.6.0"
+    underscore "^1.9.1"
 
-underscore@~1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.6.0.tgz#8b38b10cacdef63337b8b24e4ff86d45aea529a8"
+underscore@^1.9.1:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.11.0.tgz#dd7c23a195db34267186044649870ff1bab5929e"
+  integrity sha512-xY96SsN3NA461qIRKZ/+qox37YXPtSBswMGfiNptr+wrt6ds4HaMw23TP612fEyGekRE6LNRiLYr/aqbHXNedw==
