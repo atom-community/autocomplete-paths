@@ -1,6 +1,6 @@
 {
   "name": "autocomplete-paths",
-  "main": "./lib/autocomplete-paths",
+  "main": "./dist/autocomplete-paths.js",
   "version": "2.12.6",
   "description": "Adds path autocompletion to autocomplete+",
   "repository": "https://github.com/atom-community/autocomplete-paths",
@@ -8,12 +8,49 @@
   "engines": {
     "atom": ">0.50.0"
   },
+  "scripts": {
+    "clean": "shx rm -rf dist .parcel-cache",
+    "build.worker": "cross-env NODE_ENV=production parcel build --target worker lib/paths-cache-worker.js",
+    "dev.main": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
+    "build.main": "cross-env NODE_ENV=production parcel build --target main lib/autocomplete-paths.js",
+    "build": "npm run build.main && npm run build.worker",
+    "build-commit": "build-commit -o dist",
+    "prepare": "npm run build.main"
+  },
+  "targets": {
+    "main": {
+      "context": "electron-renderer",
+      "engines": {
+        "electron": ">=5.x"
+      },
+      "includeNodeModules": {
+        "atom": false,
+        "fuzzaldrin-plus-fast": false
+      },
+      "outputFormat": "commonjs",
+      "isLibrary": true
+    },
+    "worker": {
+      "context": "web-worker",
+      "includeNodeModules": true,
+      "outputFormat": "global",
+      "isLibrary": true
+    }
+  },
   "dependencies": {
     "fuzzaldrin-plus-fast": "^1.2.0",
     "git-ignore-parser": "^0.0.2",
     "minimatch": "^3.0.4",
     "slash": "^3.0.0",
     "underscore-plus": "^1.7.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "babel-preset-atomic": "^3.0.0",
+    "build-commit": "0.1.1",
+    "cross-env": "7.0.2",
+    "parcel": "^2.0.0-nightly.438",
+    "shx": "0.3.2"
   },
   "providedServices": {
     "autocomplete.provider": {
