@@ -13,9 +13,9 @@
     "build.worker": "cross-env NODE_ENV=production parcel build --target worker lib/paths-cache-worker.js",
     "dev.main": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
     "build.main": "cross-env NODE_ENV=production parcel build --target main lib/autocomplete-paths.js",
-    "build": "npm run build.main && npm run build.worker",
+    "build": "npm run build.main",
     "build-commit": "build-commit -o dist",
-    "prepare": "npm run build.main"
+    "prepare": "npm run build"
   },
   "targets": {
     "main": {
