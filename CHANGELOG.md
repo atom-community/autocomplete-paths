@@ -1,3 +1,54 @@
+2.12.10 (November 24 2020)
+===================
+
+* Handle when a project is not git repository (#239)
+
+2.12.9 (November 11 2020)
+===================
+
+* Entries filtering performance optimization (#238)
+
+2.12.8 (November 11 2020)
+===================
+
+* Call the correct updateConfig
+
+2.12.7 (November 11 2020)
+===================
+
+* General improvements (asyncify, Parcel, refactor, dead-code remove) (#237)
+
+2.12.6 (November 10 2020)
+===================
+
+* Refactoring in default scopes (#234)
+* Bump dependencies (#236)
+
+2.12.5 (November 4 2020)
+===================
+
+* Add more extensions to HTML (#197)
+
+2.12.4 (November 4 2020)
+===================
+
+* Update fuzzaldrin-plus-fast to 1.1.1 (#232)
+
+2.12.3 (November 4 2020)
+===================
+
+* Add javascript to default scopes to support tree-sitter syntax (#203)
+* Use native fuzzaldrin plus fast (#230)
+* Add normalized slashes for projectRelativePath (#226)
+* Add default woff2 extension support (#180)
+* Do not display StatusBarTile if no provider (#233)
+* Fix leftover interval timer (#185)
+
+2.12.2 (January 9 2018)
+===================
+
+* Fixes less scope (#198) - thanks @guoshencheng
+
 2.12.1 (October 13 2017)
 ===================
 
