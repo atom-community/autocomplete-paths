@@ -1,12 +1,12 @@
 2.12.10 (November 24 2020)
 ===================
 
-* Handle when a project is not git repository (#239)
+* Handle when a project is not git repository ([#239](https://github.com/atom-community/autocomplete-paths/pull/239))
 
 2.12.9 (November 11 2020)
 ===================
 
-* Entries filtering performance optimization (#238)
+* Entries filtering performance optimization ([#238](https://github.com/atom-community/autocomplete-paths/pull/238))
 
 2.12.8 (November 11 2020)
 ===================
@@ -16,48 +16,48 @@
 2.12.7 (November 11 2020)
 ===================
 
-* General improvements (asyncify, Parcel, refactor, dead-code remove) (#237)
+* General improvements (asyncify, Parcel, refactor, dead-code remove) ([#237](https://github.com/atom-community/autocomplete-paths/pull/237))
 
 2.12.6 (November 10 2020)
 ===================
 
-* Refactoring in default scopes (#234)
-* Bump dependencies (#236)
+* Refactoring in default scopes ([#234](https://github.com/atom-community/autocomplete-paths/pull/234))
+* Bump dependencies ([#236](https://github.com/atom-community/autocomplete-paths/pull/236))
 
 2.12.5 (November 4 2020)
 ===================
 
-* Add more extensions to HTML (#197)
+* Add more extensions to HTML ([#197](https://github.com/atom-community/autocomplete-paths/pull/197))
 
 2.12.4 (November 4 2020)
 ===================
 
-* Update fuzzaldrin-plus-fast to 1.1.1 (#232)
+* Update fuzzaldrin-plus-fast to 1.1.1 ([#232](https://github.com/atom-community/autocomplete-paths/pull/232))
 
 2.12.3 (November 4 2020)
 ===================
 
-* Add javascript to default scopes to support tree-sitter syntax (#203)
-* Use native fuzzaldrin plus fast (#230)
-* Add normalized slashes for projectRelativePath (#226)
-* Add default woff2 extension support (#180)
-* Do not display StatusBarTile if no provider (#233)
-* Fix leftover interval timer (#185)
+* Add javascript to default scopes to support tree-sitter syntax ([#203](https://github.com/atom-community/autocomplete-paths/pull/203))
+* Use native fuzzaldrin plus fast ([#230](https://github.com/atom-community/autocomplete-paths/pull/230))
+* Add normalized slashes for projectRelativePath ([#226](https://github.com/atom-community/autocomplete-paths/pull/226))
+* Add default woff2 extension support ([#180](https://github.com/atom-community/autocomplete-paths/pull/180))
+* Do not display StatusBarTile if no provider ([#233](https://github.com/atom-community/autocomplete-paths/pull/233))
+* Fix leftover interval timer ([#185](https://github.com/atom-community/autocomplete-paths/pull/185))
 
 2.12.2 (January 9 2018)
 ===================
 
-* Fixes less scope (#198) - thanks @guoshencheng
+* Fixes less scope ([#198](https://github.com/atom-community/autocomplete-paths/pull/198)) - thanks [@guoshencheng](https://github.com/guoshencheng)
 
 2.12.1 (October 13 2017)
 ===================
 
-* Fixes uninitialized files - thanks @avaly
+* Fixes uninitialized files - thanks [@avaly](https://github.com/avaly)
 
 2.12.0 (October 9 2017)
 ===================
 
-Thanks a lot to @avaly for the following contributions:
+Thanks a lot to [@avaly](https://github.com/avaly) for the following contributions:
 
 * Fixes support for switching projects
 * Adds support for project-relative paths autocompletion
@@ -165,7 +165,7 @@ Thanks a lot to @avaly for the following contributions:
 0.5.0 (May 10 2014)
 ===================
 
-* Fixed path regex. (#8)
+* Fixed path regex. ([#8](https://github.com/atom-community/autocomplete-paths/pull/8))
 
 0.4.0 (May 8 2014)
 ==================
