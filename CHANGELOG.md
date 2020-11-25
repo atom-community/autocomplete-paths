@@ -1,3 +1,8 @@
+2.12.11 (November 24 2020)
+===================
+
+* Fix the registration of the previous release
+
 2.12.10 (November 24 2020)
 ===================
 
