@@ -1,7 +1,7 @@
 {
   "name": "autocomplete-paths",
   "main": "./dist/autocomplete-paths.js",
-  "version": "2.12.12",
+  "version": "2.12.13",
   "description": "Adds path autocompletion to autocomplete+",
   "repository": "https://github.com/atom-community/autocomplete-paths",
   "license": "MIT",
