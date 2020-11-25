@@ -1,6 +1,11 @@
 2.12.12 (November 24 2020)
 ===================
 
+* Bump dependencies
+
+2.12.12 (November 24 2020)
+===================
+
 * Include dist files
 
 2.12.10 (November 24 2020)
