@@ -38,7 +38,7 @@
     }
   },
   "dependencies": {
-    "fuzzaldrin-plus-fast": "^1.2.0",
+    "fuzzaldrin-plus-fast": "^1.2.1",
     "git-ignore-parser": "^0.0.2",
     "minimatch": "^3.0.4",
     "slash": "^3.0.0",
