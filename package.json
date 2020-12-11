@@ -38,18 +38,18 @@
     }
   },
   "dependencies": {
-    "fuzzaldrin-plus-fast": "^1.2.1",
+    "fuzzaldrin-plus-fast": "^1.2.3",
     "git-ignore-parser": "^0.0.2",
     "minimatch": "^3.0.4",
     "slash": "^3.0.0",
     "underscore-plus": "^1.7.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.12.10",
     "babel-preset-atomic": "^3.0.0",
     "build-commit": "0.1.1",
-    "cross-env": "7.0.2",
-    "parcel": "^2.0.0-nightly.462",
+    "cross-env": "7.0.3",
+    "parcel": "^2.0.0-nightly.476",
     "shx": "0.3.3"
   },
   "providedServices": {
