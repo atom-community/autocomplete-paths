@@ -46,8 +46,9 @@
     "underscore-plus": "^1.7.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
-    "babel-preset-atomic": "^3.0.0",
+    "babel-preset-atomic": "^3.0.1",
     "build-commit": "0.1.1",
     "cross-env": "7.0.3",
     "parcel": "^2.0.0-nightly.476",
