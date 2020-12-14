@@ -43,7 +43,8 @@
     "git-ignore-parser": "^0.0.2",
     "minimatch": "^3.0.4",
     "slash": "^3.0.0",
-    "underscore-plus": "^1.7.0"
+    "underscore-plus": "^1.7.0",
+    "which": "^2.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
