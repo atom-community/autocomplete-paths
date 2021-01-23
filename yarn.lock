@@ -4022,7 +4022,7 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
-fuzzaldrin-plus-fast@^1.2.3:
+fuzzaldrin-plus-fast@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/fuzzaldrin-plus-fast/-/fuzzaldrin-plus-fast-1.2.4.tgz#15a347127d48c389e0d615fbd13adf87ed853efc"
   integrity sha512-RLJALZdoNGtItWVcm0ROU1E3SZiBT7nRWCew7aPGRzaG4kGA7hxytuEH43+taUjXw/VWSa89nEJu37//bsYIqA==
