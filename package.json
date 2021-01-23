@@ -51,7 +51,7 @@
     "babel-preset-atomic": "^3.0.1",
     "build-commit": "0.1.4",
     "cross-env": "7.0.3",
-    "parcel": "^2.0.0-nightly.551",
+    "parcel": "2.0.0-nightly.532",
     "shx": "0.3.3"
   },
   "providedServices": {
