@@ -2748,10 +2748,10 @@ buffer@^5.5.0:
     base64-js "^1.3.1"
     ieee754 "^1.1.13"
 
-build-commit@0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/build-commit/-/build-commit-0.1.2.tgz#ca0d9cd5d468a0eac2dc56c1b0fe395cba680915"
-  integrity sha512-ycqacBOj1AjxtsStx+e931u2e/DXEJwUTZ0PVHzIXaIRZoSsy+6GAxPOCS907JOBtUsVZQwTlaAk97+2egfOqw==
+build-commit@0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/build-commit/-/build-commit-0.1.4.tgz#26e89b8fdf42a84a55d1fe8f3e067d9e26885af7"
+  integrity sha512-LpdIncz6SaYSRormDsK2M6hBcCq8ZMpGZnIcZHUCOU4RTjTLgGRch9WK16iWy+9ngQsJGvfsal+aD0tt1vT74g==
   dependencies:
     colors "^1.4.0"
     commander "^7.0.0"
