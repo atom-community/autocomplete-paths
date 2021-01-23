@@ -49,9 +49,9 @@
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "babel-preset-atomic": "^3.0.1",
-    "build-commit": "0.1.1",
+    "build-commit": "0.1.2",
     "cross-env": "7.0.3",
-    "parcel": "^2.0.0-nightly.476",
+    "parcel": "^2.0.0-nightly.551",
     "shx": "0.3.3"
   },
   "providedServices": {
