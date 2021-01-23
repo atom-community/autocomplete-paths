@@ -1,4 +1,4 @@
-2.12.13 (Jan 23 2021)
+2.12.16 (Jan 23 2021)
 ===================
 - Faster load time (tree shaking underscore)
 * Bump dependencies
