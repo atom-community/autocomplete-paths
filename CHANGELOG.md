@@ -1,3 +1,8 @@
+2.12.17 (Jan 24 2021)
+===================
+- Replace `await-spawn` with the native `exec` function
+- Faster load time (the bundle size is half now.)
+
 2.12.16 (Jan 23 2021)
 ===================
 - Faster load time (tree shaking underscore)
