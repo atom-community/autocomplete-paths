@@ -1,4 +1,4 @@
 <script>
-  import "../../../lib/autocomplete-paths"
-  export default {}
+import "../../../lib/autocomplete-paths"
+export default {}
 </script>
