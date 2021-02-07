@@ -25,8 +25,8 @@ jobs:
         run: apm -v
       - name: Install dependencies
         run: |
-          apm install
-          ./node_modules/.bin/atom-package-deps .
+          apm install --production
+          npm install --only=dev
 
       - name: Run tests 👩🏾‍💻
         run: npm run test
