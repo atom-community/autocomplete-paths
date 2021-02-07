@@ -25,7 +25,7 @@
       },
       "includeNodeModules": {
         "atom": false,
-        "fuzzaldrin-plus-fast": false
+        "zadeh": false
       },
       "outputFormat": "commonjs",
       "isLibrary": true
@@ -38,7 +38,7 @@
     }
   },
   "dependencies": {
-    "fuzzaldrin-plus-fast": "^1.2.4",
+    "zadeh": "^2.0.1",
     "git-ignore-parser": "^0.0.2",
     "minimatch": "^3.0.4",
     "slash": "^3.0.0",
