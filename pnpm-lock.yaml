@@ -14,6 +14,7 @@ devDependencies:
   eslint: 7.19.0
   eslint-config-atomic: 1.10.0_eslint@7.19.0
   parcel: 2.0.0-nightly.476
+  prettier: 2.2.1
   shx: 0.3.3
 lockfileVersion: 5.2
 packages:
@@ -8977,6 +8978,7 @@ specifiers:
   git-ignore-parser: ^0.0.2
   minimatch: ^3.0.4
   parcel: 2.0.0-nightly.476
+  prettier: ^2.2.1
   shx: 0.3.3
   slash: ^3.0.0
   underscore: ^1.12.0
