@@ -10,8 +10,9 @@
   },
   "scripts": {
     "format": "prettier --write .",
-    "lint.fix": "eslint . --fix",
-    "lint": "eslint .",
+    "test.format": "prettier . --check",
+    "lint": "eslint . --fix",
+    "test.lint": "eslint .",
     "clean": "shx rm -rf dist .parcel-cache",
     "build.worker": "cross-env NODE_ENV=production parcel build --target worker lib/paths-cache-worker.js",
     "dev.main": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
