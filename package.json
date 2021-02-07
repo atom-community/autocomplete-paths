@@ -9,6 +9,8 @@
     "atom": ">0.50.0"
   },
   "scripts": {
+    "lint.fix": "eslint . --fix",
+    "lint": "eslint .",
     "clean": "shx rm -rf dist .parcel-cache",
     "build.worker": "cross-env NODE_ENV=production parcel build --target worker lib/paths-cache-worker.js",
     "dev.main": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
@@ -38,11 +40,11 @@
     }
   },
   "dependencies": {
-    "zadeh": "^2.0.1",
     "git-ignore-parser": "^0.0.2",
     "minimatch": "^3.0.4",
     "slash": "^3.0.0",
-    "underscore": "^1.12.0"
+    "underscore": "^1.12.0",
+    "zadeh": "^2.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
@@ -51,6 +53,8 @@
     "babel-preset-atomic": "^3.0.1",
     "build-commit": "0.1.4",
     "cross-env": "7.0.3",
+    "eslint": "^7.19.0",
+    "eslint-config-atomic": "^1.10.0",
     "parcel": "2.0.0-nightly.476",
     "shx": "0.3.3"
   },
