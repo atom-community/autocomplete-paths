@@ -1,5 +1,4 @@
 "use babel"
-/* global atom, expect, describe, beforeEach, it, waitsForPromise, waitsFor, runs, advanceClock, jasmine */
 
 const COMPLETION_DELAY = 100
 
