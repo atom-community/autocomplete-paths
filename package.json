@@ -9,6 +9,7 @@
     "atom": ">0.50.0"
   },
   "scripts": {
+    "format": "prettier --write .",
     "lint.fix": "eslint . --fix",
     "lint": "eslint .",
     "clean": "shx rm -rf dist .parcel-cache",
@@ -56,6 +57,7 @@
     "eslint": "^7.19.0",
     "eslint-config-atomic": "^1.10.0",
     "parcel": "2.0.0-nightly.476",
+    "prettier": "^2.2.1",
     "shx": "0.3.3"
   },
   "providedServices": {
