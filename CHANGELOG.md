@@ -1,3 +1,11 @@
+## [2.12.18](https://github.com/atom-community/autocomplete-paths/compare/v2.12.17...v2.12.18) (2021-02-07)
+
+
+### Bug Fixes
+
+* bump zadeh to include the dist files ([1f1e9b5](https://github.com/atom-community/autocomplete-paths/commit/1f1e9b51b31320ea1b0148c6c288af2dd18578df))
+* use zadeh library ([3ba7742](https://github.com/atom-community/autocomplete-paths/commit/3ba7742ee24b26e04a4421aca79ee48a77db62d5))
+
 2.12.17 (Jan 24 2021)
 ===================
 - Replace `await-spawn` with the native `exec` function
