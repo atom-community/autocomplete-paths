@@ -3,7 +3,7 @@ dependencies:
   minimatch: 3.0.4
   slash: 3.0.0
   underscore: 1.12.0
-  zadeh: 2.0.1
+  zadeh: 2.0.2
 devDependencies:
   '@babel/cli': 7.12.10_@babel+core@7.12.10
   '@babel/core': 7.12.10
@@ -8956,7 +8956,7 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-yr2icI4glYaNG+KWONODapy2/jDdMSDnrONSjblABjD9B4Z5LgiircSt8m8sRZFNi08kG9Sm0uSHtEmP3zaEGg==
-  /zadeh/2.0.1:
+  /zadeh/2.0.2:
     dependencies:
       bindings: 1.5.0
       node-addon-api: 3.1.0
@@ -8964,7 +8964,7 @@ packages:
     dev: false
     requiresBuild: true
     resolution:
-      integrity: sha512-FhRahsuKik3ehes/iFGd55FE60XIT6qfH3URF5kkg8EIZsklHdHIG0rVF/Cet7fRUwGgjZcdYE2iEKrkTpixsw==
+      integrity: sha512-20vaD+PTkqYHuvKMDMfFSOYaw4QB6tLQQteHF2mjhnXfeyP0+sCEaord7mI5QdPwrOnR4TAMi9AS2zBL/HA0BQ==
 specifiers:
   '@babel/cli': ^7.12.10
   '@babel/core': ^7.12.10
@@ -8980,4 +8980,4 @@ specifiers:
   shx: 0.3.3
   slash: ^3.0.0
   underscore: ^1.12.0
-  zadeh: ^2.0.1
+  zadeh: ^2.0.2
