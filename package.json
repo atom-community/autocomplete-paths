@@ -57,7 +57,7 @@
     "cross-env": "7.0.3",
     "eslint": "^7.19.0",
     "eslint-config-atomic": "^1.10.0",
-    "parcel": "2.0.0-nightly.476",
+    "parcel": "2.0.0-nightly.574",
     "prettier": "^2.2.1",
     "shx": "0.3.3"
   },
