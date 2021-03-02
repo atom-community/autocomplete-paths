@@ -7,6 +7,7 @@ dependencies:
 devDependencies:
   '@babel/cli': 7.12.10_@babel+core@7.12.10
   '@babel/core': 7.12.10
+  '@types/minimatch': 3.0.3
   '@types/underscore': 1.10.24
   babel-preset-atomic: 3.0.1_94179255a7638ecc93ab56a09da1cb14
   build-commit: 0.1.4
@@ -2467,6 +2468,10 @@ packages:
     dev: true
     resolution:
       integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
+  /@types/minimatch/3.0.3:
+    dev: true
+    resolution:
+      integrity: sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
   /@types/node/14.14.22:
     dev: true
     resolution:
@@ -8969,6 +8974,7 @@ packages:
 specifiers:
   '@babel/cli': ^7.12.10
   '@babel/core': ^7.12.10
+  '@types/minimatch': ^3.0.3
   '@types/underscore': ^1.10.24
   babel-preset-atomic: ^3.0.1
   build-commit: 0.1.4

@@ -51,6 +51,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
+    "@types/minimatch": "^3.0.3",
     "@types/underscore": "^1.10.24",
     "babel-preset-atomic": "^3.0.1",
     "build-commit": "0.1.4",
