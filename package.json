@@ -49,15 +49,15 @@
     "zadeh": "^2.0.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.8",
     "@types/minimatch": "^3.0.3",
-    "@types/underscore": "^1.10.24",
-    "babel-preset-atomic": "^3.0.1",
+    "@types/underscore": "^1.11.0",
+    "babel-preset-atomic": "^3.0.2",
     "build-commit": "0.1.4",
     "cross-env": "7.0.3",
-    "eslint": "^7.19.0",
-    "eslint-config-atomic": "^1.10.0",
+    "eslint": "^7.21.0",
+    "eslint-config-atomic": "^1.11.0",
     "parcel": "2.0.0-nightly.476",
     "prettier": "^2.2.1",
     "shx": "0.3.3"
