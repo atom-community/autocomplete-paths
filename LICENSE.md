@@ -1,4 +1,4 @@
-Copyright (c) 2014 FILSH Media GmbH
+Copyright (c) 2021 Autocomplete-path Contributors
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
