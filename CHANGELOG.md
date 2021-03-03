@@ -1,3 +1,13 @@
+## [2.12.19](https://github.com/atom-community/autocomplete-paths/compare/v2.12.18...v2.12.19) (2021-03-03)
+
+
+### Bug Fixes
+
+* export entry functions named ([24f272a](https://github.com/atom-community/autocomplete-paths/commit/24f272a38bf82607014abb0712a798ef07b59e42))
+* fix no case declaration ([0ccf198](https://github.com/atom-community/autocomplete-paths/commit/0ccf198b32a9fb45ad1328fd5105dd8e40a10a7f))
+* use exec instead of spawn ([f7921ed](https://github.com/atom-community/autocomplete-paths/commit/f7921eda3ee9107e897b758f3ad4440f93c29017))
+* use Object.keys for adding OptionScopes ([f386a00](https://github.com/atom-community/autocomplete-paths/commit/f386a003599aa978758e06605672123717f6338d))
+
 ## [2.12.18](https://github.com/atom-community/autocomplete-paths/compare/v2.12.17...v2.12.18) (2021-02-07)
 
 
