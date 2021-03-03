@@ -14,10 +14,8 @@
     "lint": "eslint . --fix",
     "test.lint": "eslint .",
     "clean": "shx rm -rf dist .parcel-cache",
-    "build.worker": "cross-env NODE_ENV=production parcel build --target worker lib/paths-cache-worker.js",
-    "dev.main": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
-    "build.main": "cross-env NODE_ENV=production parcel build --target main lib/autocomplete-paths.js",
-    "build": "npm run build.main",
+    "dev": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
+    "build": "cross-env NODE_ENV=production parcel build --target main lib/autocomplete-paths.js",
     "build-commit": "build-commit -o dist",
     "prepare": "npm run build"
   },
@@ -32,12 +30,6 @@
         "zadeh": false
       },
       "outputFormat": "commonjs",
-      "isLibrary": true
-    },
-    "worker": {
-      "context": "web-worker",
-      "includeNodeModules": true,
-      "outputFormat": "global",
       "isLibrary": true
     }
   },
