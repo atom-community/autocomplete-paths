@@ -1,5 +1,9 @@
 # [2.13.0](https://github.com/atom-community/autocomplete-paths/compare/v2.12.19...v2.13.0) (2021-03-04)
 
+- Build the path cache asynchronously without blocking the main thread -> Big projects no longer freeze Atom
+- Build the cache in parallel (fast-glob uses threads underneath)
+- Unified method for building the cache on all platforms
+- Allows using glob for pattern ignoring which is the most common way of writing path patterns
 
 ### Bug Fixes
 
