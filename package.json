@@ -14,10 +14,8 @@
     "lint": "eslint . --fix",
     "test.lint": "eslint .",
     "clean": "shx rm -rf dist .parcel-cache",
-    "build.worker": "cross-env NODE_ENV=production parcel build --target worker lib/paths-cache-worker.js",
-    "dev.main": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
-    "build.main": "cross-env NODE_ENV=production parcel build --target main lib/autocomplete-paths.js",
-    "build": "npm run build.main",
+    "dev": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
+    "build": "cross-env NODE_ENV=production parcel build --target main lib/autocomplete-paths.js",
     "build-commit": "build-commit -o dist",
     "prepare": "npm run build"
   },
@@ -33,16 +31,12 @@
       },
       "outputFormat": "commonjs",
       "isLibrary": true
-    },
-    "worker": {
-      "context": "web-worker",
-      "includeNodeModules": true,
-      "outputFormat": "global",
-      "isLibrary": true
     }
   },
   "dependencies": {
-    "git-ignore-parser": "^0.0.2",
+    "fast-glob": "^3.2.5",
+    "is-glob": "^4.0.1",
+    "is-valid-path": "^0.1.1",
     "minimatch": "^3.0.4",
     "slash": "^3.0.0",
     "underscore": "^1.12.0",
@@ -51,7 +45,9 @@
   "devDependencies": {
     "@babel/cli": "^7.13.0",
     "@babel/core": "^7.13.8",
+    "@types/is-valid-path": "^0.1.0",
     "@types/minimatch": "^3.0.3",
+    "@types/node": "^14.14.31",
     "@types/underscore": "^1.11.0",
     "babel-preset-atomic": "^3.0.2",
     "build-commit": "0.1.4",
