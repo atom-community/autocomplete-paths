@@ -9,6 +9,7 @@ dependencies:
 devDependencies:
   '@babel/cli': 7.13.0_@babel+core@7.13.8
   '@babel/core': 7.13.8
+  '@types/atom': 1.40.10
   '@types/is-valid-path': 0.1.0
   '@types/minimatch': 3.0.3
   '@types/node': 14.14.31
@@ -3161,6 +3162,12 @@ packages:
       '@parcel/core': ^2.0.0-alpha.3.1
     resolution:
       integrity: sha512-64d6qDd9s9LYw+9ABbOetRHgNbAaTkOHt1MJuur4tL2th7hpnAactRGe49kuWHVL4qahARkuKvdlNgW+09cwvg==
+  /@types/atom/1.40.10:
+    dependencies:
+      '@types/node': 14.14.35
+    dev: true
+    resolution:
+      integrity: sha512-aNFUhCuR6nmTTMoYKfWWMifZ3IcNETLWC75hCdg3i1/OvirfR/5qm1wfiISBb4s/TPM2YVEtxytCdWhKJuEhzw==
   /@types/http-proxy/1.17.5:
     dependencies:
       '@types/node': 14.14.22
@@ -3191,6 +3198,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-vFHy/ezP5qI0rFgJ7aQnjDXwAMrG0KqqIH7tQG5PPv3BWBayOPIQNBjVc/P6hhdZfMx51REc6tfDNXHUio893g==
+  /@types/node/14.14.35:
+    dev: true
+    resolution:
+      integrity: sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
   /@types/parse-json/4.0.0:
     dev: true
     resolution:
@@ -9703,6 +9714,7 @@ packages:
 specifiers:
   '@babel/cli': ^7.13.0
   '@babel/core': ^7.13.8
+  '@types/atom': ^1.40.10
   '@types/is-valid-path': ^0.1.0
   '@types/minimatch': ^3.0.3
   '@types/node': ^14.14.31
