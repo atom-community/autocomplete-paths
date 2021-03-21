@@ -9,6 +9,7 @@ dependencies:
 devDependencies:
   '@babel/cli': 7.13.10_@babel+core@7.13.10
   '@babel/core': 7.13.10
+  '@types/atom': 1.40.10
   '@types/is-valid-path': 0.1.0
   '@types/minimatch': 3.0.3
   '@types/node': 14.14.35
@@ -3255,6 +3256,12 @@ packages:
       '@parcel/core': ^2.0.0-alpha.3.1
     resolution:
       integrity: sha512-64d6qDd9s9LYw+9ABbOetRHgNbAaTkOHt1MJuur4tL2th7hpnAactRGe49kuWHVL4qahARkuKvdlNgW+09cwvg==
+  /@types/atom/1.40.10:
+    dependencies:
+      '@types/node': 14.14.35
+    dev: true
+    resolution:
+      integrity: sha512-aNFUhCuR6nmTTMoYKfWWMifZ3IcNETLWC75hCdg3i1/OvirfR/5qm1wfiISBb4s/TPM2YVEtxytCdWhKJuEhzw==
   /@types/http-proxy/1.17.5:
     dependencies:
       '@types/node': 14.14.22
@@ -9894,6 +9901,7 @@ packages:
 specifiers:
   '@babel/cli': ^7.13.10
   '@babel/core': ^7.13.10
+  '@types/atom': ^1.40.10
   '@types/is-valid-path': ^0.1.0
   '@types/minimatch': ^3.0.3
   '@types/node': ^14.14.35
