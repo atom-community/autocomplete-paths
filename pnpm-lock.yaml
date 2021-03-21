@@ -9,6 +9,7 @@ dependencies:
 devDependencies:
   '@babel/cli': 7.13.10_@babel+core@7.13.10
   '@babel/core': 7.13.10
+  '@types/atom': 1.40.10
   '@types/is-valid-path': 0.1.0
   '@types/minimatch': 3.0.3
   '@types/node': 14.14.35
@@ -19,7 +20,7 @@ devDependencies:
   eslint: 7.22.0
   eslint-config-atomic: 1.12.4_eslint@7.22.0
   parcel: 2.0.0-nightly.476
-  prettier: 2.2.1
+  prettier-config-atomic: 1.0.1
   shx: 0.3.3
 lockfileVersion: 5.2
 packages:
@@ -3255,6 +3256,12 @@ packages:
       '@parcel/core': ^2.0.0-alpha.3.1
     resolution:
       integrity: sha512-64d6qDd9s9LYw+9ABbOetRHgNbAaTkOHt1MJuur4tL2th7hpnAactRGe49kuWHVL4qahARkuKvdlNgW+09cwvg==
+  /@types/atom/1.40.10:
+    dependencies:
+      '@types/node': 14.14.35
+    dev: true
+    resolution:
+      integrity: sha512-aNFUhCuR6nmTTMoYKfWWMifZ3IcNETLWC75hCdg3i1/OvirfR/5qm1wfiISBb4s/TPM2YVEtxytCdWhKJuEhzw==
   /@types/http-proxy/1.17.5:
     dependencies:
       '@types/node': 14.14.22
@@ -8316,6 +8323,12 @@ packages:
       node: '>= 0.8.0'
     resolution:
       integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
+  /prettier-config-atomic/1.0.1:
+    dependencies:
+      prettier: 2.2.1
+    dev: true
+    resolution:
+      integrity: sha512-bNW8oMkuuVZI0OXEwwfbGGpdh1Jv4QfOzSMnmueBkSCYcCAnA9iHy+wRVsAeVRZPfB1hjqB9UtxGTnrflITtyg==
   /prettier/2.2.1:
     dev: true
     engines:
@@ -9888,6 +9901,7 @@ packages:
 specifiers:
   '@babel/cli': ^7.13.10
   '@babel/core': ^7.13.10
+  '@types/atom': ^1.40.10
   '@types/is-valid-path': ^0.1.0
   '@types/minimatch': ^3.0.3
   '@types/node': ^14.14.35
@@ -9902,7 +9916,7 @@ specifiers:
   is-valid-path: ^0.1.1
   minimatch: ^3.0.4
   parcel: 2.0.0-nightly.476
-  prettier: ^2.2.1
+  prettier-config-atomic: ^1.0.1
   shx: 0.3.3
   slash: ^3.0.0
   underscore: ^1.12.0
