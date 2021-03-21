@@ -23,7 +23,7 @@ describe("autocomplete-paths", () => {
     atom.config.set("autocomplete-plus.autoActivationDelay", COMPLETION_DELAY)
     atom.config.set("autocomplete-paths.ignoredPatterns", ["**/tests"])
 
-    let workspaceElement = atom.views.getView(atom.workspace)
+    const workspaceElement = atom.views.getView(atom.workspace)
     jasmine.attachToDOM(workspaceElement)
 
     waitsForPromise(() =>
