@@ -12,6 +12,7 @@
     "format": "prettier --write .",
     "test.format": "prettier . --check",
     "lint": "eslint . --fix",
+    "test": "atom --test ./spec",
     "test.lint": "eslint .",
     "clean": "shx rm -rf dist .parcel-cache",
     "dev": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
@@ -19,6 +20,7 @@
     "build-commit": "build-commit -o dist",
     "prepare": "npm run build"
   },
+  "prettier": "prettier-config-atomic",
   "targets": {
     "main": {
       "context": "electron-renderer",
@@ -43,20 +45,20 @@
     "zadeh": "^2.0.2"
   },
   "devDependencies": {
-    "@babel/cli": "^7.13.0",
-    "@babel/core": "^7.13.8",
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
     "@types/atom": "^1.40.10",
     "@types/is-valid-path": "^0.1.0",
     "@types/minimatch": "^3.0.3",
-    "@types/node": "^14.14.31",
+    "@types/node": "^14.14.35",
     "@types/underscore": "^1.11.0",
-    "babel-preset-atomic": "^3.0.2",
+    "babel-preset-atomic": "^3.0.3",
     "build-commit": "0.1.4",
     "cross-env": "7.0.3",
-    "eslint": "^7.21.0",
-    "eslint-config-atomic": "^1.11.0",
+    "eslint": "^7.22.0",
+    "eslint-config-atomic": "^1.12.4",
     "parcel": "2.0.0-nightly.476",
-    "prettier": "^2.2.1",
+    "prettier-config-atomic": "^1.0.1",
     "shx": "0.3.3"
   },
   "providedServices": {
