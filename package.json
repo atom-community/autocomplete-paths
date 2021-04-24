@@ -29,7 +29,8 @@
       },
       "includeNodeModules": {
         "atom": false,
-        "zadeh": false
+        "zadeh": false,
+        "fsevents": false
       },
       "outputFormat": "commonjs",
       "isLibrary": true
