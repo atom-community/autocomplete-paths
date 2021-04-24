@@ -29,13 +29,15 @@
       },
       "includeNodeModules": {
         "atom": false,
-        "zadeh": false
+        "zadeh": false,
+        "fsevents": false
       },
       "outputFormat": "commonjs",
       "isLibrary": true
     }
   },
   "dependencies": {
+    "chokidar": "^3.5.1",
     "fast-glob": "^3.2.5",
     "is-glob": "^4.0.1",
     "is-valid-path": "^0.1.1",
