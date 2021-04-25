@@ -1,3 +1,22 @@
+# [2.14.0](https://github.com/atom-community/autocomplete-paths/compare/v2.13.0...v2.14.0) (2021-04-25)
+
+
+### Bug Fixes
+
+* _addWatcherForDirectory ([4f98074](https://github.com/atom-community/autocomplete-paths/commit/4f98074a956434a8bf482b566d58dc03b320d1f7))
+* _addWatchers ([e18ec8e](https://github.com/atom-community/autocomplete-paths/commit/e18ec8ea4474343409aaec7086bb259a8fa3e698))
+* don't emit redundant rebuild-cache-done ([3cf37a1](https://github.com/atom-community/autocomplete-paths/commit/3cf37a1af0ad4a499055cd4216c69ebd107f0d0a))
+* emit rebuild-cache _onDirectoryChanged ([8829c78](https://github.com/atom-community/autocomplete-paths/commit/8829c7868e3897b17ad36571bae2d1be7a32a304))
+* refactor _cachePaths and _cachePathsForDirectory ([5f85f1c](https://github.com/atom-community/autocomplete-paths/commit/5f85f1c6480dd0c98cc18db9b8869c71a7b29dec))
+* rename the functions to be more exact ([d09ec83](https://github.com/atom-community/autocomplete-paths/commit/d09ec83c3cc19048e10f6ed71f89231d3e7018ae))
+* run _addWatchers in rebuildCache ([dbf5c24](https://github.com/atom-community/autocomplete-paths/commit/dbf5c24797731840093bdde03b16cb4527044d4a))
+* use Map.clear instead of creating a new Map ([a7c8578](https://github.com/atom-community/autocomplete-paths/commit/a7c8578c9a6da4eec825e75200f3354ab6757d05))
+
+
+### Features
+
+* use chokidar to watch file changes ([b228c89](https://github.com/atom-community/autocomplete-paths/commit/b228c8947f862e9a3fcd29159bfe68998a01aa86))
+
 # [2.13.0](https://github.com/atom-community/autocomplete-paths/compare/v2.12.19...v2.13.0) (2021-03-04)
 
 - Build the path cache asynchronously without blocking the main thread -> Big projects no longer freeze Atom
