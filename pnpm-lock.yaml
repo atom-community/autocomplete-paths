@@ -16,8 +16,6 @@ specifiers:
   eslint-config-atomic: ^1.12.4
   fast-glob: ^3.2.5
   globify-gitignore: ^0.2.0
-  is-glob: ^4.0.1
-  is-valid-path: ^0.1.1
   minimatch: ^3.0.4
   parcel: 2.0.0-nightly.476
   prettier-config-atomic: ^1.0.1
@@ -30,8 +28,6 @@ dependencies:
   chokidar: 3.5.1
   fast-glob: 3.2.5
   globify-gitignore: 0.2.0
-  is-glob: 4.0.1
-  is-valid-path: 0.1.1
   minimatch: 3.0.4
   slash: 3.0.0
   underscore: 1.12.0
