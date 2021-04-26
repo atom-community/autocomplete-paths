@@ -39,7 +39,7 @@
   "dependencies": {
     "chokidar": "^3.5.1",
     "fast-glob": "^3.2.5",
-    "globify-gitignore": "^0.1.1",
+    "globify-gitignore": "^0.2.0",
     "is-glob": "^4.0.1",
     "is-valid-path": "^0.1.1",
     "minimatch": "^3.0.4",

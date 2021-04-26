@@ -15,7 +15,7 @@ specifiers:
   eslint: ^7.22.0
   eslint-config-atomic: ^1.12.4
   fast-glob: ^3.2.5
-  globify-gitignore: ^0.1.1
+  globify-gitignore: ^0.2.0
   is-glob: ^4.0.1
   is-valid-path: ^0.1.1
   minimatch: ^3.0.4
@@ -29,7 +29,7 @@ specifiers:
 dependencies:
   chokidar: 3.5.1
   fast-glob: 3.2.5
-  globify-gitignore: 0.1.1
+  globify-gitignore: 0.2.0
   is-glob: 4.0.1
   is-valid-path: 0.1.1
   minimatch: 3.0.4
@@ -4880,7 +4880,6 @@ packages:
 
   /dedent/0.7.0:
     resolution: {integrity: sha1-JJXduvbrh0q7Dhvp3yLS5aVEMmw=}
-    dev: true
 
   /deep-is/0.1.3:
     resolution: {integrity: sha1-s2nW+128E+7PUk+RsHD+7cNXzzQ=}
@@ -5966,9 +5965,10 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /globify-gitignore/0.1.1:
-    resolution: {integrity: sha512-Mogd9oyzN364PXQh/B23n8/DOTRuwhUc5BU5bDIVMZ3nsRYE8mT8ubqB3vpx0FtCyYqc8QhfT/SzVH/e3JXb2Q==}
+  /globify-gitignore/0.2.0:
+    resolution: {integrity: sha512-hwQd5BQp/Sy4Ha3ZRnGry1f8LGOYTwmTnE3DAefBUvwRArK0+xkM6HdWQrQOpl92aEE3qPnvzXOtbosUBsHLkw==}
     dependencies:
+      dedent: 0.7.0
       is-valid-path: 0.1.1
     dev: false
 
