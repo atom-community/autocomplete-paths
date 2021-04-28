@@ -1,3 +1,26 @@
+# [2.15.0](https://github.com/atom-community/autocomplete-paths/compare/v2.14.0...v2.15.0) (2021-04-28)
+
+
+### Bug Fixes
+
+* break after the removed filed is found ([25b9ccf](https://github.com/atom-community/autocomplete-paths/commit/25b9ccffb6745dd5431685126b5597dec0bb7686))
+* call _getAllIgnoredGlob only once ([3ce936b](https://github.com/atom-community/autocomplete-paths/commit/3ce936b7c239fc38ce242dad9656b4c5a3dfc5e8))
+* debounce  provider.rebuildCache ([5b07a1d](https://github.com/atom-community/autocomplete-paths/commit/5b07a1d07b891277f424cdea3bf1d35fbeeea6b7))
+* do not run the listeners on initial scan ([1f76a8b](https://github.com/atom-community/autocomplete-paths/commit/1f76a8bb96bf64284690c41b728f3165fd1cfe70))
+* don't call rebuild-cache on file add or remove ([022bfe8](https://github.com/atom-community/autocomplete-paths/commit/022bfe86c1514aa0e55bbc2f23cbe9a732f661e5))
+* make the rebuildCache debounce immediate ([587c3dc](https://github.com/atom-community/autocomplete-paths/commit/587c3dc0f752f5321bed49e2361b5cdb49bc854d))
+* process all the gitignore files in the root directory ([054f353](https://github.com/atom-community/autocomplete-paths/commit/054f353711429f159b8951fd31bfb1a4fce2695a))
+* remove unused dependencies ([7c3cb55](https://github.com/atom-community/autocomplete-paths/commit/7c3cb559bae61da7b7184ae02b83f2037f2b38a0))
+* update to globify-gitignore 0.2.0 ([3a6d28d](https://github.com/atom-community/autocomplete-paths/commit/3a6d28dbce2bc8477f0bbba0cf2dd68f188f925f))
+* use _cachePathsForDirectoryWithGlob directly in onAddDir ([4f3e4a1](https://github.com/atom-community/autocomplete-paths/commit/4f3e4a12baa2e90b3d0939adfdf490c89201958c))
+* use globify-gitignore ([50f122e](https://github.com/atom-community/autocomplete-paths/commit/50f122e2939328dae6bdcd93ce03570dc4ec9943))
+* use indexof inside onRemoveFile ([97ba9f8](https://github.com/atom-community/autocomplete-paths/commit/97ba9f83ed987e96f810eb9913c5fcd8bae47808))
+
+
+### Features
+
+* rebuild cache for that directory if a new gitignore file is added ([c62d11c](https://github.com/atom-community/autocomplete-paths/commit/c62d11c09f7a1575d3dc025dbece93dbce011d8e))
+
 # [2.14.0](https://github.com/atom-community/autocomplete-paths/compare/v2.13.0...v2.14.0) (2021-04-25)
 
 
