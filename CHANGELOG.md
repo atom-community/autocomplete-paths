@@ -1,3 +1,13 @@
+## [2.15.1](https://github.com/atom-community/autocomplete-paths/compare/v2.15.0...v2.15.1) (2021-04-28)
+
+
+### Bug Fixes
+
+* cache ignored glob by directory ([f619651](https://github.com/atom-community/autocomplete-paths/commit/f619651841ecbe9bfc8a00408b998717af2e1b55))
+* do not follow symlinks in chokidar ([ef98d40](https://github.com/atom-community/autocomplete-paths/commit/ef98d40f1325dfc9f2108e330aad60387112fbf8))
+* increase the interval of chokidar ([50829d3](https://github.com/atom-community/autocomplete-paths/commit/50829d35e50ca5c7797688c4ed46b763755ecddc))
+* remove unused projectDirectory input for onAddDir ([d59124f](https://github.com/atom-community/autocomplete-paths/commit/d59124f6daab3810f9251a433d783ed8ef4f998a))
+
 # [2.15.0](https://github.com/atom-community/autocomplete-paths/compare/v2.14.0...v2.15.0) (2021-04-28)
 
 
