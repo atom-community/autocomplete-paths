@@ -37,13 +37,13 @@
     }
   },
   "dependencies": {
-    "chokidar": "^3.5.1",
-    "fast-glob": "^3.2.5",
+    "chokidar": "^3.5.2",
+    "fast-glob": "^3.2.7",
     "globify-gitignore": "^0.2.0",
     "minimatch": "^3.0.4",
-    "slash": "^3.0.0",
-    "underscore": "^1.12.0",
-    "zadeh": "^2.0.2"
+    "slash": "^4.0.0",
+    "underscore": "^1.13.1",
+    "zadeh": "^2.1.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.10",
