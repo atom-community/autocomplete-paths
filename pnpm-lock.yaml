@@ -1,54 +1,55 @@
 lockfileVersion: 5.3
 
-specifiers:
-  '@babel/cli': ^7.13.10
-  '@babel/core': ^7.13.10
-  '@types/atom': ^1.40.10
-  '@types/is-valid-path': ^0.1.0
-  '@types/minimatch': ^3.0.3
-  '@types/node': ^14.14.35
-  '@types/underscore': ^1.11.0
-  babel-preset-atomic: ^3.0.3
-  build-commit: 0.1.4
-  chokidar: ^3.5.1
-  cross-env: 7.0.3
-  eslint: ^7.22.0
-  eslint-config-atomic: ^1.12.4
-  fast-glob: ^3.2.5
-  globify-gitignore: ^0.2.0
-  minimatch: ^3.0.4
-  parcel: 2.0.0-nightly.476
-  prettier-config-atomic: ^1.0.1
-  shx: 0.3.3
-  slash: ^3.0.0
-  underscore: ^1.12.0
-  zadeh: ^2.0.2
+importers:
 
-dependencies:
-  chokidar: 3.5.1
-  fast-glob: 3.2.5
-  globify-gitignore: 0.2.0
-  minimatch: 3.0.4
-  slash: 3.0.0
-  underscore: 1.12.0
-  zadeh: 2.0.2
-
-devDependencies:
-  '@babel/cli': 7.13.14_@babel+core@7.13.14
-  '@babel/core': 7.13.14
-  '@types/atom': 1.40.10
-  '@types/is-valid-path': 0.1.0
-  '@types/minimatch': 3.0.3
-  '@types/node': 14.14.35
-  '@types/underscore': 1.11.0
-  babel-preset-atomic: 3.0.4_e31ecfbbbe19d88b5d279330eadea78c
-  build-commit: 0.1.4
-  cross-env: 7.0.3
-  eslint: 7.23.0
-  eslint-config-atomic: 1.12.4_eslint@7.23.0
-  parcel: 2.0.0-nightly.476
-  prettier-config-atomic: 1.0.1
-  shx: 0.3.3
+  .:
+    specifiers:
+      '@babel/cli': ^7.13.10
+      '@babel/core': ^7.13.10
+      '@types/atom': ^1.40.10
+      '@types/is-valid-path': ^0.1.0
+      '@types/minimatch': ^3.0.3
+      '@types/node': ^14.14.35
+      '@types/underscore': ^1.11.0
+      babel-preset-atomic: ^3.0.3
+      build-commit: 0.1.4
+      chokidar: ^3.5.1
+      cross-env: 7.0.3
+      eslint: ^7.22.0
+      eslint-config-atomic: ^1.12.4
+      fast-glob: ^3.2.5
+      globify-gitignore: ^0.2.0
+      minimatch: ^3.0.4
+      parcel: 2.0.0-nightly.476
+      prettier-config-atomic: ^1.0.1
+      shx: 0.3.3
+      slash: ^4.0.0
+      underscore: ^1.12.0
+      zadeh: ^2.0.2
+    dependencies:
+      chokidar: 3.5.1
+      fast-glob: 3.2.5
+      globify-gitignore: 0.2.0
+      minimatch: 3.0.4
+      slash: 4.0.0
+      underscore: 1.12.0
+      zadeh: 2.0.2
+    devDependencies:
+      '@babel/cli': 7.13.14_@babel+core@7.13.14
+      '@babel/core': 7.13.14
+      '@types/atom': 1.40.10
+      '@types/is-valid-path': 0.1.0
+      '@types/minimatch': 3.0.3
+      '@types/node': 14.14.35
+      '@types/underscore': 1.11.0
+      babel-preset-atomic: 3.0.4_e31ecfbbbe19d88b5d279330eadea78c
+      build-commit: 0.1.4
+      cross-env: 7.0.3
+      eslint: 7.23.0
+      eslint-config-atomic: 1.12.4_eslint@7.23.0
+      parcel: 2.0.0-nightly.476
+      prettier-config-atomic: 1.0.1
+      shx: 0.3.3
 
 packages:
 
@@ -8620,6 +8621,12 @@ packages:
   /slash/3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
+    dev: true
+
+  /slash/4.0.0:
+    resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
+    engines: {node: '>=12'}
+    dev: false
 
   /slice-ansi/3.0.0:
     resolution: {integrity: sha512-pSyv7bSTC7ig9Dcgbw9AuRNUb5k5V6oDudjZoMBSr13qpLBG7tB+zgCkARjq7xIUgdz5P1Qe8u+rSGdouOOIyQ==}
