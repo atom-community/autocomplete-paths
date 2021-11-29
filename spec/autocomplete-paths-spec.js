@@ -1,9 +1,35 @@
-"use babel"
+/** @babel */
+
+function waitsFor(escapeFunction, timeoutError = null, escapeTime = null) {
+  return new Promise((resolve, reject) => {
+    // check the escapeFunction every millisecond so as soon as it is met we can escape the function
+    const interval = setInterval(function () {
+      if (escapeFunction()) {
+        clearMe()
+        resolve()
+      }
+    }, 1)
+
+    // in case we never reach the escapeFunction, we will time out at the escapeTime
+    const timeOut = escapeTime
+      ? setTimeout(function () {
+          clearMe()
+          reject(timeoutError)
+        }, escapeTime)
+      : null
+
+    // clear the interval and the timeout
+    function clearMe() {
+      clearInterval(interval)
+      clearTimeout(timeOut)
+    }
+  })
+}
 
 const COMPLETION_DELAY = 100
 
 describe("autocomplete-paths", () => {
-  let [editor, provider] = []
+  let editor, provider
   const getSuggestions = () => {
     const cursor = editor.getLastCursor()
     const start = cursor.getBeginningOfCurrentWordBufferPosition()
@@ -18,7 +44,7 @@ describe("autocomplete-paths", () => {
     return provider.getSuggestions(request)
   }
 
-  beforeEach(() => {
+  beforeEach(async () => {
     atom.config.set("autocomplete-plus.enableAutoActivation", true)
     atom.config.set("autocomplete-plus.autoActivationDelay", COMPLETION_DELAY)
     atom.config.set("autocomplete-paths.ignoredPatterns", ["**/tests"])
@@ -26,72 +52,52 @@ describe("autocomplete-paths", () => {
     const workspaceElement = atom.views.getView(atom.workspace)
     jasmine.attachToDOM(workspaceElement)
 
-    waitsForPromise(() =>
-      Promise.all([
-        atom.workspace.open("sample.js").then((e) => {
-          editor = e
-        }),
-        atom.packages.activatePackage("language-javascript"),
-        atom.packages.activatePackage("autocomplete-paths"),
-        atom.packages.activatePackage("autocomplete-plus"),
-        atom.packages.activatePackage("status-bar"),
-      ])
-    )
-    runs(() => {
-      provider = atom.packages.getActivePackage("autocomplete-paths").mainModule.getProvider()
-    })
-    waitsFor(() => provider.isReady())
+    await Promise.all([
+      atom.workspace.open("sample.js").then((e) => {
+        editor = e
+      }),
+      atom.packages.activatePackage("language-javascript"),
+      atom.packages.activatePackage("autocomplete-paths"),
+      atom.packages.activatePackage("autocomplete-plus"),
+      atom.packages.activatePackage("status-bar"),
+    ])
+
+    provider = atom.packages.getActivePackage("autocomplete-paths").mainModule.getProvider()
+    await waitsFor(() => provider.isReady())
   })
 
-  it("triggers when text before cursor matches one of the scopes", () => {
-    runs(() => {
-      editor.setText("require('t")
-      editor.setCursorBufferPosition([0, Infinity])
-    })
-    waitsForPromise(() =>
-      getSuggestions().then((suggestions) => {
-        expect(suggestions).toHaveLength(4)
-      })
-    )
+  it("triggers when text before cursor matches one of the scopes", async () => {
+    editor.setText("require('t")
+    editor.setCursorBufferPosition([0, Infinity])
+    const suggestions = await getSuggestions()
+
+    expect(suggestions).toHaveLength(2)
   })
 
-  it("only displays files relevant to the matching scope", () => {
-    waitsForPromise(() => atom.packages.activatePackage("language-javascript"))
-    runs(() => {
-      editor.setText("require('t")
-      editor.setCursorBufferPosition([0, Infinity])
-    })
-    waitsForPromise(() =>
-      getSuggestions().then((suggestions) => {
-        expect(suggestions).toHaveLength(4)
-        expect(suggestions[0].displayText).toBe("somedir/testfile.js")
-        expect(suggestions[1].displayText).toBe("linkeddir/testfile.js")
-        expect(suggestions[2].displayText).toBe("somedir/testdir/nested-test-file.js")
-        expect(suggestions[3].displayText).toBe("linkeddir/testdir/nested-test-file.js")
-      })
-    )
+  it("only displays files relevant to the matching scope", async () => {
+    await atom.packages.activatePackage("language-javascript")
+    editor.setText("require('t")
+    editor.setCursorBufferPosition([0, Infinity])
+    const suggestions = await getSuggestions()
+
+    expect(suggestions).toHaveLength(2)
+    expect(suggestions[0].displayText).toBe("somedir/testfile.js")
+    expect(suggestions[1].displayText).toBe("somedir/testdir/nested-test-file.js")
   })
 
-  it("removes the extension when accepting a JS import suggestion", () => {
-    let editorView
-    waitsForPromise(() => atom.packages.activatePackage("language-javascript"))
-    runs(() => {
-      editorView = atom.views.getView(editor)
-      editor.setText("require('")
-      editor.moveToBottom()
-      editor.insertText("t")
-      editor.insertText("e")
-      editor.insertText("s")
+  it("removes the extension when accepting a JS import suggestion", async () => {
+    await atom.packages.activatePackage("language-javascript")
+    const editorView = atom.views.getView(editor)
+    editor.setText("require('")
+    editor.moveToBottom()
+    editor.insertText("t")
+    editor.insertText("e")
+    editor.insertText("s")
 
-      advanceClock(COMPLETION_DELAY)
-    })
-    waitsFor("autocomplete view to appear", 1000, () => {
-      return editorView.querySelector(".autocomplete-plus")
-    })
-    runs(() => {
-      atom.commands.dispatch(editorView, "autocomplete-plus:confirm")
+    await waitsFor(() => editorView.querySelector(".autocomplete-plus"), "autocomplete view to appear", 1000)
 
-      expect(editor.getText()).toEqual("require('./somedir/testfile")
-    })
+    atom.commands.dispatch(editorView, "autocomplete-plus:confirm")
+
+    expect(editor.getText()).toEqual("require('./somedir/testfile")
   })
 })
