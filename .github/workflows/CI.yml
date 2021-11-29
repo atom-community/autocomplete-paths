@@ -23,6 +23,9 @@ jobs:
       - uses: UziTech/action-setup-atom@v1
         with:
           channel: ${{ matrix.atom_channel }}
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "lts/*"
       - name: Versions
         run: apm -v
       - name: Install dependencies
@@ -63,9 +66,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: UziTech/action-setup-atom@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: "12.x"
+          node-version: "lts/*"
       - name: NPM install
         run: npm install
       - name: Build and Commit
