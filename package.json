@@ -1,6 +1,6 @@
 {
   "name": "autocomplete-paths",
-  "version": "2.15.2",
+  "version": "2.16.0",
   "description": "Adds path autocompletion to autocomplete+",
   "repository": "https://github.com/atom-community/autocomplete-paths",
   "license": "MIT",

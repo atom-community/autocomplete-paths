@@ -1,3 +1,15 @@
+# [2.16.0](https://github.com/atom-community/autocomplete-paths/compare/v2.15.2...v2.16.0) (2021-11-29)
+
+
+### Bug Fixes
+
+* update deps ([#279](https://github.com/atom-community/autocomplete-paths/issues/279)) ([5e49f36](https://github.com/atom-community/autocomplete-paths/commit/5e49f363fa0a2bbfad7446bd03c5618d7186f2e5))
+
+
+### Features
+
+* add setting to not follow symlinks ([#278](https://github.com/atom-community/autocomplete-paths/issues/278)) ([964faee](https://github.com/atom-community/autocomplete-paths/commit/964faee12d23380b40a739dd4c70805699e2e073))
+
 ## [2.15.2](https://github.com/atom-community/autocomplete-paths/compare/v2.15.1...v2.15.2) (2021-05-02)
 
 
