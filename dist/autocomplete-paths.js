@@ -163,9 +163,12 @@ class $b15434387a78119d$var$PathsProvider extends $igPDg$events.EventEmitter {
         if (fuzzyMatcher) files = (0, $igPDg$zadeh.filter)(files, fuzzyMatcher, {
             maxResults: 10
         });
+        const showImagePreview = atom.config.get("autocomplete-paths.imagePreview");
+        const imgRegex = /\.(png|svg|jpg|jpeg|jfif|pjpeg|pjp|gif|apng|ico|cur)$/;
         const suggestions = files.map((pathName)=>{
             let text = pathName;
             const normalizeSlashes = atom.config.get("autocomplete-paths.normalizeSlashes");
+            const absolutePath = $b15434387a78119d$var$_path.default.resolve($b15434387a78119d$var$_path.default.dirname(request2.editor.getPath()), pathName);
             const projectRelativePath = atom.project.relativizePath(text)[1];
             let displayText = projectRelativePath;
             if (directoryGiven) displayText = $b15434387a78119d$var$_path.default.relative(requestedDirectoryPath, text);
@@ -188,12 +191,13 @@ class $b15434387a78119d$var$PathsProvider extends $igPDg$events.EventEmitter {
             });
              // Calculate distance to file
             const distanceToFile = relativePath.split($b15434387a78119d$var$_path.default.sep).length;
+            const iconHTML = showImagePreview && imgRegex.test(absolutePath) ? `<image style="background-position: center; background-repeat: no-repeat; background-size: contain; background-image: url(${absolutePath}); height:29px; width:29px;"></image>` : '<i class="icon-file-code"></i>';
             return {
                 text: text,
                 replacementPrefix: pathPrefix,
                 displayText: displayText,
                 type: "import",
-                iconHTML: '<i class="icon-file-code"></i>',
+                iconHTML: iconHTML,
                 score: (0, $igPDg$zadeh.score)(displayText, request2.prefix),
                 distanceToFile: distanceToFile
             };
@@ -13989,6 +13993,11 @@ const $661f0ec0189dd3b0$var$config = {
         type: "boolean",
         default: false,
         description: "Follow directory symlinks. Disable if you have a self-referencing symlink."
+    },
+    imagePreview: {
+        type: "boolean",
+        default: false,
+        description: "Show preview icon for images."
     },
     ignoredNames: {
         type: "boolean",

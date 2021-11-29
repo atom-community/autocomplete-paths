@@ -1,3 +1,10 @@
+# [2.17.0](https://github.com/atom-community/autocomplete-paths/compare/v2.16.0...v2.17.0) (2021-11-29)
+
+
+### Features
+
+* add setting to show image preview ([#188](https://github.com/atom-community/autocomplete-paths/issues/188)) ([a5546b9](https://github.com/atom-community/autocomplete-paths/commit/a5546b9d43a8adfc0d9f720b2f0f1c5ba1dc6782))
+
 # [2.16.0](https://github.com/atom-community/autocomplete-paths/compare/v2.15.2...v2.16.0) (2021-11-29)
 
 
