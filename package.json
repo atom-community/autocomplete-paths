@@ -1,26 +1,68 @@
 {
   "name": "autocomplete-paths",
-  "main": "./dist/autocomplete-paths.js",
   "version": "2.15.2",
   "description": "Adds path autocompletion to autocomplete+",
   "repository": "https://github.com/atom-community/autocomplete-paths",
   "license": "MIT",
+  "main": "./dist/autocomplete-paths.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production parcel build --target main lib/autocomplete-paths.js",
+    "build-commit": "build-commit -o dist",
+    "clean": "shx rm -rf dist .parcel-cache",
+    "dev": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
+    "format": "prettier --write .",
+    "lint": "eslint . --fix",
+    "prepare": "npm run build",
+    "test": "atom --test ./spec",
+    "test.format": "prettier . --check",
+    "test.lint": "eslint ."
+  },
+  "prettier": "prettier-config-atomic",
+  "dependencies": {
+    "chokidar": "^3.5.2",
+    "fast-glob": "^3.2.7",
+    "globify-gitignore": "^0.2.1",
+    "minimatch": "^3.0.4",
+    "slash": "^4.0.0",
+    "underscore": "^1.13.1",
+    "zadeh": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@types/atom": "^1.40.11",
+    "@types/is-valid-path": "^0.1.0",
+    "@types/minimatch": "^3.0.5",
+    "@types/node": "^12",
+    "@types/underscore": "^1.11.3",
+    "atom-jasmine3-test-runner": "^5.2.9",
+    "babel-preset-atomic": "^4.2.1",
+    "build-commit": "0.1.4",
+    "cross-env": "7.0.3",
+    "eslint": "^7.32.0",
+    "eslint-config-atomic": "^1.16.5",
+    "parcel": "^2.0.1",
+    "prettier-config-atomic": "^3.0.1",
+    "shx": "0.3.3"
+  },
   "engines": {
     "atom": ">0.50.0"
   },
-  "scripts": {
-    "format": "prettier --write .",
-    "test.format": "prettier . --check",
-    "lint": "eslint . --fix",
-    "test": "atom --test ./spec",
-    "test.lint": "eslint .",
-    "clean": "shx rm -rf dist .parcel-cache",
-    "dev": "cross-env NODE_ENV=development parcel watch --target main lib/autocomplete-paths.js",
-    "build": "cross-env NODE_ENV=production parcel build --target main lib/autocomplete-paths.js",
-    "build-commit": "build-commit -o dist",
-    "prepare": "npm run build"
+  "atomTestRunner": "./spec/runner.js",
+  "consumedServices": {
+    "status-bar": {
+      "versions": {
+        "^1.0.0": "consumeStatusBar"
+      }
+    }
   },
-  "prettier": "prettier-config-atomic",
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0": "getProvider"
+      }
+    }
+  },
   "targets": {
     "main": {
       "context": "electron-renderer",
@@ -34,46 +76,6 @@
       },
       "outputFormat": "commonjs",
       "isLibrary": true
-    }
-  },
-  "dependencies": {
-    "chokidar": "^3.5.1",
-    "fast-glob": "^3.2.5",
-    "globify-gitignore": "^0.2.0",
-    "minimatch": "^3.0.4",
-    "slash": "^3.0.0",
-    "underscore": "^1.12.0",
-    "zadeh": "^2.0.2"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.13.10",
-    "@babel/core": "^7.13.10",
-    "@types/atom": "^1.40.10",
-    "@types/is-valid-path": "^0.1.0",
-    "@types/minimatch": "^3.0.3",
-    "@types/node": "^14.14.35",
-    "@types/underscore": "^1.11.0",
-    "babel-preset-atomic": "^3.0.3",
-    "build-commit": "0.1.4",
-    "cross-env": "7.0.3",
-    "eslint": "^7.22.0",
-    "eslint-config-atomic": "^1.12.4",
-    "parcel": "2.0.0-nightly.476",
-    "prettier-config-atomic": "^1.0.1",
-    "shx": "0.3.3"
-  },
-  "providedServices": {
-    "autocomplete.provider": {
-      "versions": {
-        "2.0.0": "getProvider"
-      }
-    }
-  },
-  "consumedServices": {
-    "status-bar": {
-      "versions": {
-        "^1.0.0": "consumeStatusBar"
-      }
     }
   }
 }
