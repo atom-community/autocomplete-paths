@@ -33,17 +33,17 @@
     "@types/atom": "^1.40.11",
     "@types/is-valid-path": "^0.1.0",
     "@types/minimatch": "^3.0.5",
-    "@types/node": "^12",
+    "@types/node": "^18.0.0",
     "@types/underscore": "^1.11.3",
     "atom-jasmine3-test-runner": "^5.2.9",
     "babel-preset-atomic": "^4.2.1",
     "build-commit": "0.1.4",
     "cross-env": "7.0.3",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.0",
     "eslint-config-atomic": "^1.16.5",
     "parcel": "^2.0.1",
     "prettier-config-atomic": "^3.0.1",
-    "shx": "0.3.3"
+    "shx": "0.3.4"
   },
   "engines": {
     "atom": ">0.50.0"
