@@ -8,7 +8,7 @@ importers:
       '@babel/core': ^7.16.0
       '@types/atom': ^1.40.11
       '@types/is-valid-path': ^0.1.0
-      '@types/minimatch': ^3.0.5
+      '@types/minimatch': ^5.0.0
       '@types/node': ^18.0.0
       '@types/underscore': ^1.11.3
       atom-jasmine3-test-runner: ^5.2.9
@@ -40,7 +40,7 @@ importers:
       '@babel/core': 7.16.0
       '@types/atom': 1.40.11
       '@types/is-valid-path': 0.1.0
-      '@types/minimatch': 3.0.5
+      '@types/minimatch': 5.1.0
       '@types/node': 18.0.0
       '@types/underscore': 1.11.3
       atom-jasmine3-test-runner: 5.2.9
@@ -2574,7 +2574,7 @@ packages:
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
-      '@types/minimatch': 3.0.5
+      '@types/minimatch': 5.1.0
       '@types/node': 18.0.0
     dev: true
 
@@ -2608,8 +2608,8 @@ packages:
       '@types/unist': 2.0.6
     dev: true
 
-  /@types/minimatch/3.0.5:
-    resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
+  /@types/minimatch/5.1.0:
+    resolution: {integrity: sha512-0RJHq5FqDWo17kdHe+SMDJLfxmLaqHbWnqZ6gNKzDvStUlrmx/eKIY17+ifLS1yybo7X86aUshQMlittDOVNnw==}
     dev: true
 
   /@types/node/18.0.0:
