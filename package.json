@@ -21,9 +21,9 @@
   "dependencies": {
     "chokidar": "^3.5.2",
     "fast-glob": "^3.2.7",
-    "globify-gitignore": "^0.2.1",
+    "globify-gitignore": "^1.0.0",
     "minimatch": "^3.0.4",
-    "slash": "^4.0.0",
+    "slash": "^5.0.0",
     "underscore": "^1.13.1",
     "zadeh": "^2.1.0"
   },
