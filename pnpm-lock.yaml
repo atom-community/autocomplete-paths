@@ -9,7 +9,7 @@ importers:
       '@types/atom': ^1.40.11
       '@types/is-valid-path': ^0.1.0
       '@types/minimatch': ^5.0.0
-      '@types/node': ^18.0.0
+      '@types/node': ^20.0.0
       '@types/underscore': ^1.11.3
       atom-jasmine3-test-runner: ^5.2.9
       babel-preset-atomic: ^5.0.0
@@ -41,7 +41,7 @@ importers:
       '@types/atom': 1.40.11
       '@types/is-valid-path': 0.1.0
       '@types/minimatch': 5.1.0
-      '@types/node': 18.0.0
+      '@types/node': 20.8.6
       '@types/underscore': 1.11.3
       atom-jasmine3-test-runner: 5.2.9
       babel-preset-atomic: 5.0.0
@@ -2533,7 +2533,7 @@ packages:
   /@types/atom/1.40.11:
     resolution: {integrity: sha512-TsPltugw2wKtR5p6ICv73t9kxdx59fTfdcD8Xe/0EEjF5vHBz99Z7Kj/rPRpyM/4ZcY1GrkQh8hgOw/OJRCs0g==}
     dependencies:
-      '@types/node': 18.0.0
+      '@types/node': 20.8.6
     dev: true
 
   /@types/babel__core/7.1.19:
@@ -2575,13 +2575,13 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 5.1.0
-      '@types/node': 18.0.0
+      '@types/node': 20.8.6
     dev: true
 
   /@types/http-proxy/1.17.5:
     resolution: {integrity: sha512-GNkDE7bTv6Sf8JbV2GksknKOsk7OznNYHSdrtvPJXO0qJ9odZig6IZKUi5RFGi6d1bf6dgIAe4uXi3DBc7069Q==}
     dependencies:
-      '@types/node': 18.0.0
+      '@types/node': 20.8.6
     dev: true
 
   /@types/is-valid-path/0.1.0:
@@ -2612,8 +2612,10 @@ packages:
     resolution: {integrity: sha512-0RJHq5FqDWo17kdHe+SMDJLfxmLaqHbWnqZ6gNKzDvStUlrmx/eKIY17+ifLS1yybo7X86aUshQMlittDOVNnw==}
     dev: true
 
-  /@types/node/18.0.0:
-    resolution: {integrity: sha512-cHlGmko4gWLVI27cGJntjs/Sj8th9aYwplmZFwmmgYQQvL5NUsgVJG7OddLvNfLqYS31KFN0s3qlaD9qCaxACA==}
+  /@types/node/20.8.6:
+    resolution: {integrity: sha512-eWO4K2Ji70QzKUqRy6oyJWUeB7+g2cRagT3T/nxYibYcT4y2BDL8lqolRXjTHmkZCdJfIPaY73KbJAZmcryxTQ==}
+    dependencies:
+      undici-types: 5.25.3
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -8182,6 +8184,10 @@ packages:
 
   /underscore/1.13.1:
     resolution: {integrity: sha512-hzSoAVtJF+3ZtiFX0VgfFPHEDRm7Y/QPjGyNo4TVdnDTdft3tr8hEkD25a1jC+TjTuE7tkHGKkhwCgs9dgBB2g==}
+
+  /undici-types/5.25.3:
+    resolution: {integrity: sha512-Ga1jfYwRn7+cP9v8auvEXN1rX3sWqlayd4HP7OKk4mZWylEmu3KzXDUGrQUN6Ol7qo1gPvB2e5gX6udnyEPgdA==}
+    dev: true
 
   /unicode-canonical-property-names-ecmascript/2.0.0:
     resolution: {integrity: sha512-yY5PpDlfVIU5+y/BSCxAJRBIS1Zc2dDG3Ujq+sR0U+JjUevW2JhocOF+soROYDSaAezOzOKuyyixhD6mBknSmQ==}
