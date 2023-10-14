@@ -33,7 +33,7 @@
     "@types/atom": "^1.40.11",
     "@types/is-valid-path": "^0.1.0",
     "@types/minimatch": "^5.0.0",
-    "@types/node": "^18.0.0",
+    "@types/node": "^20.0.0",
     "@types/underscore": "^1.11.3",
     "atom-jasmine3-test-runner": "^5.2.9",
     "babel-preset-atomic": "^5.0.0",
